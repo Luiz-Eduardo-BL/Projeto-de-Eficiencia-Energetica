@@ -8,11 +8,11 @@ defaults:
     working-directory: ./frontend
 jobs:
   build_and_deploy:
+  
     runs-on: ubuntu-latest
+    
     steps:
-      - name: 🏗 Setup repo
-        uses: actions/checkout@v2
-          
+      - uses: actions/checkout@v2
       - uses: expo/expo-github-action@v7
         with:
           expo-version: 5.x
@@ -20,7 +20,7 @@ jobs:
           expo-cache: true
 
       - name: 📦 Install dependencies
-        run: expo install
+        run: npm install --legacy-peer-deps
 
       - name: 🚀 Publish app
-        run: expo install expo-updates && expo publish --non-interactive
+        run: expo install expo-updates && expo publish
