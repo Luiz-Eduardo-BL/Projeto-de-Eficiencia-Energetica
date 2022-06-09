@@ -10,7 +10,15 @@ jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: 🏗 Setup repo
+        uses: actions/checkout@v2
+
+      - name: 🏗 Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16.x
+          cache: yarn
+          
       - uses: expo/expo-github-action@v7
         with:
           expo-version: 5.x
@@ -18,7 +26,7 @@ jobs:
           expo-cache: true
 
       - name: 📦 Install dependencies
-        run: npm install --legacy-peer-deps
+        run: yarn install
 
       - name: 🚀 Publish app
-        run: expo install expo-updates && npm run publish
+        run: expo install expo-updates && expo publish --non-interactive
