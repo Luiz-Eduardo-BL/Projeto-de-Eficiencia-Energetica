@@ -1,4 +1,5 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import AmbientLight from '../pages/AmbientLight';
 import DataProcessing from '../pages/DataProcessing';
 import QRCode from '../pages/QRCode';
 
@@ -22,6 +23,14 @@ export function ProcessingStack() {
                 })
                 }
             />
+
+            <AppStack.Screen name="AmbientLight" component={AmbientLight}
+                options={({ navigation, route }) => ({
+                    title: 'AmbientLight'
+                })
+                }
+            />
+
 
         </AppStack.Navigator>
     )

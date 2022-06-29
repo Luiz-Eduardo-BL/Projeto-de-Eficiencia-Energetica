@@ -25,7 +25,7 @@ export default function QRCode({navigation}) {
     return <Text>Requesting for camera permission</Text>;
   }
   if (hasPermission === false) {
-    return <Text>No access to camera</Text>;
+    return <Text>Sem acesso para a câmera!</Text>;
   }
 
   return (
@@ -34,6 +34,7 @@ export default function QRCode({navigation}) {
         type={'back'}
         onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
         style={StyleSheet.absoluteFillObject}
+        barCodeTypes={[BarCodeScanner.Constants.BarCodeType.qr]}
       >
         <BarcodeMask 
             edgeColor={'#38546A'}
