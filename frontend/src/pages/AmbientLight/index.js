@@ -35,9 +35,10 @@ export default function AmbientLight() {
                 blue: avgB,
                 alpha: avgA,
                 brightness: brightness,
-                iluminance: 0.2126*avgR + 0.7152*avgG + 0.0722*avgB,
-                iluminance2: Math.sqrt((0.299*avgR)**2 + (0.587*avgG)**2 + (0.114*avgB)**2),
-                iluminance3: 0.299*avgR + 0.587*avgG + 0.114*avgB
+                iluminance: 0.2126 * avgR + 0.7152 * avgG + 0.0722 * avgB,
+                iluminance2: Math.sqrt((0.299 * avgR) ** 2 + (0.587 * avgG) ** 2 + (0.114 * avgB) ** 2),
+                iluminance3: 0.299 * avgR + 0.587 * avgG + 0.114 * avgB,
+                test: 0.299 * avgR + 0.587 * avgG + 0.114 * avgB
             }
             cb(null, results)
         })
@@ -82,6 +83,7 @@ export default function AmbientLight() {
             cameraType: "front",
             mediaTypes: ImagePicker.MediaTypeOptions.Images, // Only allow images
             quality: 0, // No compression
+            exif:true
 
         });
 

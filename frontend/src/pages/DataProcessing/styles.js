@@ -22,5 +22,29 @@ export default StyleSheet.create({
         fontWeight:'bold',
         fontSize:15,
 
+    },
+    image: {
+        flex: 1,
+        width:'100%',
+        height:'100%',
+        justifyContent: "center",
+        alignItems:"center",
+        flexDirection:"column",
+        alignSelf:'center',
+        borderBottomEndRadius:200,
+        opacity:0.9
+      },
+    title:{
+        textAlign:'center',
+        fontWeight:'bold',
+        color:'#FFF',
+        paddingTop:10,
+        fontSize:20
+    },
+    titleBox:{
+        flex:1,
+        justifyContent:'flex-start',
+        //backgroundColor:'pink',
+        alignItems:'center'
     }
 })
