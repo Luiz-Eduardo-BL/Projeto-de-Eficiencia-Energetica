@@ -10,11 +10,11 @@ export default StyleSheet.create({
     },
     startButton:{
         backgroundColor:theme.colors.primary,
-        height:50,
+        height:200,
         width:200,
         alignItems:'center',
         justifyContent:'center',
-        borderRadius:20,
+        borderRadius:100,
     },
     textButton:{
         color:'#FFF',
