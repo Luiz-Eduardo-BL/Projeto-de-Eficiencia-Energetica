@@ -51,5 +51,24 @@ export default StyleSheet.create({
         justifyContent:'flex-start',
         //backgroundColor:'pink',
         alignItems:'center'
-    }
+    },
+    circle: {
+        width: 300,
+        borderRadius: 150,
+        height: 300,
+        position: 'absolute',
+        borderColor: 'blue',
+        borderWidth: 4,
+        backgroundColor: theme.colors.primary,
+      },
+      innerCircle: {
+        width: 160,
+        borderRadius: 80,
+        height: 160,
+        zIndex: 100,
+        justifyContent:'center',
+        alignItems:'center',
+        position: 'absolute',
+        backgroundColor: theme.colors.primary,
+      },
 })
