@@ -44,7 +44,7 @@ export default function QRCode({navigation}) {
             outerMaskOpacity={0.3}
         />
         </BarCodeScanner>
-        <SafeAreaView style={styles.containerSecondary}>
+        <SafeAreaView style={[styles.AndroidSafeArea,styles.containerSecondary]}>
         <View style={styles.button}>
         <TouchableOpacity  onPress={()=>navigation.goBack()}>
             <Ionicons name="arrow-back" size={35} color="#FFF" />

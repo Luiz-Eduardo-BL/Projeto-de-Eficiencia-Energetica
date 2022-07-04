@@ -21,7 +21,9 @@ export default {
             })
             return response.json(eficiencia)
         })
-        .catch((err) => {response.status(404).json({error: err})})
+        .catch((err) => {
+            response.status(404).json({error: err})
+        })
     },
 
     async result(request, response) {
@@ -80,6 +82,8 @@ export default {
 
 
     })
-    .catch((err) => {response.status(404).json({error: err})})
+    .catch((err) => {
+        response.status(404).json({error: err})
+    })
     }
 }

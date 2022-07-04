@@ -1,7 +1,12 @@
-import {StyleSheet} from 'react-native'
+import {StyleSheet,Platform,StatusBar} from 'react-native'
 import { theme } from '../../global/styles/theme'
 
 export default StyleSheet.create({
+    AndroidSafeArea: {
+        flex: 1,
+        //backgroundColor: "white",
+        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
+      },
     container:{
         flex:1,
         flexDirection:'column',
