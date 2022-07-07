@@ -9,7 +9,7 @@ export function ProcessingStack() {
 
 
     return (
-        <AppStack.Navigator screenOptions={{ headerShown: false }}>
+        <AppStack.Navigator screenOptions={{headerShown: false }}>
             <AppStack.Screen name="DataProcessing" component={DataProcessing}
                 options={({ navigation, route }) => ({
                     title: 'Processamento de Dados'

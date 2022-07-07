@@ -1,11 +1,21 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, Image, Button } from 'react-native';
+import React, { useEffect, useState, useContext } from 'react';
+import { View, Text, Image, Button} from 'react-native';
 
 import * as ImagePicker from 'expo-image-picker';
 
 import Jimp from 'jimp/browser/lib/jimp'
 
+import { DadosContext } from '../../context';
+
+import styles from "./styles"
+
 export default function AmbientLight() {
+
+    const {qrCodeScanned, setQRCodeScanned} = useContext(DadosContext);
+
+    useEffect(() => {
+        setQRCodeScanned(false)
+    },[])
 
     async function pixelAverage(src, cb) {
         await Jimp.read(src, function (err, img) {
@@ -131,23 +141,3 @@ export default function AmbientLight() {
 
 // Kindacode.com
 // Just some styles
-const styles = StyleSheet.create({
-    screen: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    buttonContainer: {
-        width: 400,
-        flexDirection: 'row',
-        justifyContent: 'space-around'
-    },
-    imageContainer: {
-        padding: 30
-    },
-    image: {
-        width: 400,
-        height: 300,
-        resizeMode: 'contain'
-    }
-});

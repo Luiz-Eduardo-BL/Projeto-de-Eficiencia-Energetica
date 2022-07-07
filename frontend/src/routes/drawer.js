@@ -34,9 +34,8 @@ export default function Drawer() {
     return (
         <App.Navigator
             screenOptions={{
-
                 headerShown: false,
-
+                swipeEnabled:false
             }}
         >
             <App.Screen name="ProcessingStack" component={ProcessingStack} />
