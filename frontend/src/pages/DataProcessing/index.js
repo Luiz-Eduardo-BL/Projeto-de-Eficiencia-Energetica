@@ -13,6 +13,7 @@ import Animated, {
 }
     from 'react-native-reanimated';
 
+import { Entypo } from '@expo/vector-icons';
 
 import styles from "./styles"
 
@@ -65,10 +66,17 @@ export default function DataProcessing({ navigation }) {
 
         >
             <>
+
                 <SafeAreaView style={[styles.AndroidSafeArea, styles.titleBox]}>
-                    <Text style={styles.title}>
-                        {`Projeto de\nEficiência Energética`}
-                    </Text>
+
+                    <View style={styles.containerHeader}>
+                        <TouchableOpacity style={styles.menu} onPress={() => navigation.openDrawer()}>
+                            <Entypo name="menu" size={28} color="#FFF" />
+                        </TouchableOpacity>
+                        <Text style={styles.title}>
+                            {`Projeto de\nEficiência Energética`}
+                        </Text>
+                    </View>
 
 
                     <View style={{ alignItems: 'center', justifyContent: 'center', flex: 1 }}>

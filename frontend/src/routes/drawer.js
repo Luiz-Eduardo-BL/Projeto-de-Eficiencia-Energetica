@@ -36,6 +36,7 @@ export default function Drawer() {
             screenOptions={{
 
                 headerShown: false,
+                swipeEnabled: false
 
             }}
         >

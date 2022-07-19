@@ -5,13 +5,27 @@ export default StyleSheet.create({
     AndroidSafeArea: {
         flex: 1,
         //backgroundColor: "white",
+        width:'100%',
         paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
       },
+    
+
     container:{
         flex:1,
         flexDirection:'column',
         justifyContent:'center',
-        alignItems:'center'
+        alignItems:'center',
+       
+    },
+    containerHeader:{
+      alignItems:'center',
+      justifyContent:'center',
+      width:'100%',
+      flexDirection:'row'
+    },
+    menu:{
+      position:'absolute',
+      left:30
     },
     startButton:{
         backgroundColor:theme.colors.primary,
