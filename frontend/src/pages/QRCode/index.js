@@ -5,10 +5,12 @@ import BarcodeMask from 'react-native-barcode-mask';
 import { DadosContext } from '../../context';
 import { Ionicons } from '@expo/vector-icons';
 import styles from './styles';
+import { DadosContext } from '../../context';
 
 export default function QRCode({ navigation }) {
   const [hasPermission, setHasPermission] = useState(null);
-  const { qrCodeScanned, setQRCodeScanned } = useContext(DadosContext);
+  const [scanned, setScanned] = useState(false);
+  const {dados, setDados} = useContext(DadosContext)
 
   useEffect(() => {
     (async () => {
@@ -18,11 +20,9 @@ export default function QRCode({ navigation }) {
   }, []);
 
   const handleBarCodeScanned = ({ type, data }) => {
-    //setQRCodeScanned(true);
-    //console.log(qrCodeScanned)
-    navigation.navigate('AmbientLight')
-    //setQRCodeScanned(false);
-    //alert(`Bar code with type ${type} and data ${data} has been scanned!`);
+    setScanned(true);
+    alert(`Bar code with type ${type} and data ${data} has been scanned!`)
+    setDados(data)
   };
 
   if (hasPermission === null) {

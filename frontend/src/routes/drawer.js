@@ -40,7 +40,8 @@ export default function Drawer() {
             }}
         >
             <App.Screen name="ProcessingStack" component={ProcessingStack} />
-            <App.Screen name="Notifications" component={NotificationsScreen} />
+            <App.Screen name="TimeLine" component={NotificationsScreen} />
+            
         </App.Navigator>
 
     )
