@@ -46,36 +46,41 @@ export default {
                 nivelD: snapshot.docs[0].data().nivelD
                 
             }
-            
+
             let densidadePotIluminacaoRelativa = potenciaTotal*100/(area*iluminanciaMediaFinal)
 
             if (densidadePotIluminacaoRelativa <= eficiencia.nivelA) {
                 return response.json({
                     classificacao: 'A',
+                    indiceK: indiceK,
                     dpiRf : densidadePotIluminacaoRelativa
                 })
             }
             else if (densidadePotIluminacaoRelativa <= eficiencia.nivelB) {
                 return response.json({
                     classificacao: 'B',
+                    indiceK: indiceK,
                     dpiRf : densidadePotIluminacaoRelativa
                 })
             }
             else if (densidadePotIluminacaoRelativa <= eficiencia.nivelC) {
                 return response.json({
                     classificacao: 'C',
+                    indiceK: indiceK,
                     dpiRf : densidadePotIluminacaoRelativa
                 })
             }
             else if (densidadePotIluminacaoRelativa <= eficiencia.nivelD) {
                 return response.json({
                     classificacao: 'D',
+                    indiceK: indiceK,
                     dpiRf : densidadePotIluminacaoRelativa
                 })
             }
             else{
                 return response.json({
                     classificacao: 'E',
+                    indiceK: indiceK,
                     dpiRf : densidadePotIluminacaoRelativa
                 })
             
