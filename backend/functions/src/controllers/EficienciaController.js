@@ -39,39 +39,35 @@ export default {
         .where('indiceK', '>=', indiceK)
         .orderBy('indiceK', 'asc').get()
         .then(snapshot => {
-            let eficiencia = []
-            snapshot.forEach(doc => {
-                eficiencia.push({
-                    nivelA: doc.data().nivelA,
-                    nivelB: doc.data().nivelB,
-                    nivelC: doc.data().nivelC,
-                    nivelD: doc.data().nivelD
-                    
-                })
-            })
-            let analise = eficiencia[0]
-
+            let eficiencia = {
+                nivelA: snapshot.docs[0].data().nivelA,
+                nivelB: snapshot.docs[0].data().nivelB,
+                nivelC: snapshot.docs[0].data().nivelC,
+                nivelD: snapshot.docs[0].data().nivelD
+                
+            }
+            
             let densidadePotIluminacaoRelativa = potenciaTotal*100/(area*iluminanciaMediaFinal)
 
-            if (densidadePotIluminacaoRelativa <= analise.nivelA) {
+            if (densidadePotIluminacaoRelativa <= eficiencia.nivelA) {
                 return response.json({
                     classificacao: 'A',
                     dpiRf : densidadePotIluminacaoRelativa
                 })
             }
-            else if (densidadePotIluminacaoRelativa <= analise.nivelB) {
+            else if (densidadePotIluminacaoRelativa <= eficiencia.nivelB) {
                 return response.json({
                     classificacao: 'B',
                     dpiRf : densidadePotIluminacaoRelativa
                 })
             }
-            else if (densidadePotIluminacaoRelativa <= analise.nivelC) {
+            else if (densidadePotIluminacaoRelativa <= eficiencia.nivelC) {
                 return response.json({
                     classificacao: 'C',
                     dpiRf : densidadePotIluminacaoRelativa
                 })
             }
-            else if (densidadePotIluminacaoRelativa <= analise.nivelD) {
+            else if (densidadePotIluminacaoRelativa <= eficiencia.nivelD) {
                 return response.json({
                     classificacao: 'D',
                     dpiRf : densidadePotIluminacaoRelativa
