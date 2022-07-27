@@ -28,7 +28,12 @@ export default {
 
     async result(request, response) {
         response.set('Access-Control-Allow-Origin', '*')
-        const { indiceK, area, potenciaTotal, iluminanciaMediaFinal} = request.body
+
+        const {largura, comprimento,distanciaPlanoDeTrabalhoTeto,potenciaLampada,qntdLampadas,iluminanciaMediaFinal} = request.body
+
+        const area = largura * comprimento
+        const potenciaTotal = potenciaLampada * qntdLampadas
+        const indiceK = area/(distanciaPlanoDeTrabalhoTeto*(comprimento+largura))
 
         await db.collection('eficiencia')
         .where('indiceK', '>=', indiceK)
