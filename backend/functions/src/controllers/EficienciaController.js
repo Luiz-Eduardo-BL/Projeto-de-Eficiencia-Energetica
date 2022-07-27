@@ -36,16 +36,31 @@ export default {
         const indiceK = area/(distanciaPlanoDeTrabalhoTeto*(comprimento+largura))
 
         await db.collection('eficiencia')
-        .where('indiceK', '>=', indiceK)
         .orderBy('indiceK', 'asc').get()
         .then(snapshot => {
-            let eficiencia = {
-                nivelA: snapshot.docs[0].data().nivelA,
-                nivelB: snapshot.docs[0].data().nivelB,
-                nivelC: snapshot.docs[0].data().nivelC,
-                nivelD: snapshot.docs[0].data().nivelD
-                
-            }
+            let difAux = 0
+            let eficienciaAux = []
+            let countAux = 0
+            let pos = 0
+            snapshot.forEach(doc => {
+                eficienciaAux.push({
+                    nivelA: doc.data().nivelA,
+                    nivelB: doc.data().nivelB,
+                    nivelC: doc.data().nivelC,
+                    nivelD: doc.data().nivelD
+                })
+                if (countAux == 0)
+                    difAux = Math.abs(doc.data().indiceK - indiceK)
+                else if(Math.abs(doc.data().indiceK - indiceK) < difAux) {
+                    difAux = Math.abs(doc.data().indiceK - indiceK)
+                    pos = countAux //posição do nivel k mais próximo
+                }
+
+                countAux++
+            })
+
+
+            let eficiencia = eficienciaAux[pos]
 
             let densidadePotIluminacaoRelativa = potenciaTotal*100/(area*iluminanciaMediaFinal)
 
