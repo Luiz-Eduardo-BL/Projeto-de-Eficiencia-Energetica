@@ -29,11 +29,15 @@ export default {
     async result(request, response) {
         response.set('Access-Control-Allow-Origin', '*')
 
-        const {largura, comprimento,distanciaPlanoDeTrabalhoTeto,potenciaLampada,qntdLampadas,iluminanciaMediaFinal} = request.body
+        const {largura, comprimento,distanciaPlanoDeTrabalhoTeto,potenciaLampada,qntdLampadas,iluminanciaMediaFinal, aparelho} = request.body
 
         const area = largura * comprimento
         const potenciaTotal = potenciaLampada * qntdLampadas
         const indiceK = area/(distanciaPlanoDeTrabalhoTeto*(comprimento+largura))
+
+        //if(aparelho.toLowerCase().includes("samsung")){
+
+       // }
 
         await db.collection('eficiencia')
         .orderBy('indiceK', 'asc').get()
