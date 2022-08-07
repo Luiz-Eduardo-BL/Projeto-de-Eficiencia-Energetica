@@ -35,7 +35,7 @@
         app:layout_constraintVertical_bias="0.05" />
 
     <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/animationView"
+        android:id="@+id/infoAnimation"
         android:layout_width="300dp"
         android:layout_height="300dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -58,10 +58,10 @@
         android:textColor="#FFF"
         android:textSize="14sp"
         app:fontFamily="sans-serif-black"
-        app:layout_constraintBottom_toBottomOf="@+id/animationView"
-        app:layout_constraintEnd_toEndOf="@+id/animationView"
-        app:layout_constraintStart_toStartOf="@+id/animationView"
-        app:layout_constraintTop_toTopOf="@+id/animationView" />
+        app:layout_constraintBottom_toBottomOf="@+id/infoAnimation"
+        app:layout_constraintEnd_toEndOf="@+id/infoAnimation"
+        app:layout_constraintStart_toStartOf="@+id/infoAnimation"
+        app:layout_constraintTop_toTopOf="@+id/infoAnimation" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
