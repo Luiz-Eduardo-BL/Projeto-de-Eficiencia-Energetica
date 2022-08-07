@@ -52,9 +52,9 @@ public class Home extends AppCompatActivity {
         }
     }
 
-    private void ActivityRoomDescription(String jsonQR){
+    private void ActivityRoomDescription(String jsonQRCode){
         Intent intent = new Intent(this,RoomDescription.class);
-        intent.putExtra("jsonQR",jsonQR);
+        intent.putExtra("jsonQRCode",jsonQRCode);
         startActivity(intent);
 
     }

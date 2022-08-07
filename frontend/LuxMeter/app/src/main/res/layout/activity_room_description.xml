@@ -7,30 +7,21 @@
     tools:context=".RoomDescription">
 
 
-    <ImageButton
-        android:id="@+id/imageButton4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgorund="#FFF"
-        app:srcCompat="@mipmap/nextScreen"
-        tools:layout_editor_absoluteX="282dp"
-        tools:layout_editor_absoluteY="520dp" />
-
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/sala"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:maxWidth="250dp"
         android:text="nullnullnullnull nullnullnullnull null nullnullnullnullnull null nullnull null null"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView3"
+        app:layout_constraintBottom_toBottomOf="@+id/salaTitulo"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textView3"
-        app:layout_constraintTop_toTopOf="@+id/textView3" />
+        app:layout_constraintStart_toEndOf="@+id/salaTitulo"
+        app:layout_constraintTop_toTopOf="@+id/salaTitulo" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/salaTitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -38,107 +29,107 @@
         android:text="Sala:"
         android:textSize="20sp"
         app:fontFamily="sans-serif-black"
-        app:layout_constraintEnd_toStartOf="@+id/textView4"
+        app:layout_constraintEnd_toStartOf="@+id/sala"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toBottomOf="@+id/animationView" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/comprimentoTitulo"
         android:layout_width="95dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:text="Comprimento:"
         android:textSize="14sp"
         app:fontFamily="sans-serif-black"
-        app:layout_constraintEnd_toStartOf="@+id/textView7"
+        app:layout_constraintEnd_toStartOf="@+id/comprimento"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/sala" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/comprimento"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="null"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView5"
+        app:layout_constraintBottom_toBottomOf="@+id/comprimentoTitulo"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textView5"
-        app:layout_constraintTop_toTopOf="@+id/textView5" />
+        app:layout_constraintStart_toEndOf="@+id/comprimentoTitulo"
+        app:layout_constraintTop_toTopOf="@+id/comprimentoTitulo" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/larguraTitulo"
         android:layout_width="95dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:text="Largura:"
         android:textSize="14sp"
         app:fontFamily="sans-serif-black"
-        app:layout_constraintStart_toEndOf="@+id/textView7"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintStart_toEndOf="@+id/comprimento"
+        app:layout_constraintTop_toBottomOf="@+id/sala" />
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/largura"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="null"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView8"
+        app:layout_constraintBottom_toBottomOf="@+id/larguraTitulo"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
-        app:layout_constraintStart_toEndOf="@+id/textView8"
-        app:layout_constraintTop_toTopOf="@+id/textView8"
+        app:layout_constraintStart_toEndOf="@+id/larguraTitulo"
+        app:layout_constraintTop_toTopOf="@+id/larguraTitulo"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/distanciaMesaTetoTitulo"
         android:layout_width="95dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:text="Distância\nMesa/Teto:"
         android:textSize="14sp"
         app:fontFamily="sans-serif-black"
-        app:layout_constraintStart_toStartOf="@+id/textView5"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintStart_toStartOf="@+id/comprimentoTitulo"
+        app:layout_constraintTop_toBottomOf="@+id/comprimentoTitulo" />
 
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/distanciaMesaTeto"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="null"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView10"
+        app:layout_constraintBottom_toBottomOf="@+id/distanciaMesaTetoTitulo"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
-        app:layout_constraintStart_toEndOf="@+id/textView10"
-        app:layout_constraintTop_toTopOf="@+id/textView10" />
+        app:layout_constraintStart_toEndOf="@+id/distanciaMesaTetoTitulo"
+        app:layout_constraintTop_toTopOf="@+id/distanciaMesaTetoTitulo" />
 
     <TextView
-        android:id="@+id/textView14"
+        android:id="@+id/PotenciaLampadaTitulo"
         android:layout_width="95dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:text="Potência da\nLâmpada:"
         android:textSize="14sp"
         app:fontFamily="sans-serif-black"
-        app:layout_constraintStart_toEndOf="@+id/textView11"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        app:layout_constraintStart_toEndOf="@+id/distanciaMesaTeto"
+        app:layout_constraintTop_toBottomOf="@+id/larguraTitulo" />
 
     <TextView
-        android:id="@+id/textView15"
+        android:id="@+id/potenciaLampada"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="null"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView14"
+        app:layout_constraintBottom_toBottomOf="@+id/PotenciaLampadaTitulo"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
-        app:layout_constraintStart_toEndOf="@+id/textView14"
-        app:layout_constraintTop_toTopOf="@+id/textView14" />
+        app:layout_constraintStart_toEndOf="@+id/PotenciaLampadaTitulo"
+        app:layout_constraintTop_toTopOf="@+id/PotenciaLampadaTitulo" />
 
     <TextView
-        android:id="@+id/textView16"
+        android:id="@+id/qtdLampadaTitulo"
         android:layout_width="95dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -146,18 +137,18 @@
         android:textSize="14sp"
         app:fontFamily="sans-serif-black"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        app:layout_constraintTop_toBottomOf="@+id/distanciaMesaTetoTitulo" />
 
     <TextView
-        android:id="@+id/textView17"
+        android:id="@+id/qtdLampada"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="null"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView16"
+        app:layout_constraintBottom_toBottomOf="@+id/qtdLampadaTitulo"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
-        app:layout_constraintStart_toEndOf="@+id/textView16"
-        app:layout_constraintTop_toTopOf="@+id/textView16" />
+        app:layout_constraintStart_toEndOf="@+id/qtdLampadaTitulo"
+        app:layout_constraintTop_toTopOf="@+id/qtdLampadaTitulo" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
@@ -193,5 +184,18 @@
         app:lottie_autoPlay="true"
         app:lottie_fileName="workspace.json"
         app:lottie_loop="true" />
+
+    <ImageView
+        android:id="@+id/nextScreen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:rotation="0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/qtdLampadaTitulo"
+        app:layout_constraintVertical_bias="0.7"
+        app:srcCompat="@mipmap/nextnavigation" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
