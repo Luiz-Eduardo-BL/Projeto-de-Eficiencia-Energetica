@@ -8,9 +8,10 @@ public class LightChangeListener implements SensorEventListener {
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        if (event.sensor.getType() == Sensor.TYPE_LIGHT && !MainActivity.getInstance().isHold()) {
+        if (event.sensor.getType() == Sensor.TYPE_LIGHT) {
             float lux = event.values[0];
-            MainActivity.getInstance().getTextView().setText(String.valueOf(lux));
+            String luxS = String.valueOf(lux)+"lx";
+            MainActivity.getInstance().getTextView().setText(luxS);
         }
     }
 
