@@ -22,6 +22,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         instance = this;
+
+        getSupportActionBar().setTitle("Medidor de Lux");
+
         setContentView(R.layout.activity_main);
         text = findViewById(R.id.num);
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
