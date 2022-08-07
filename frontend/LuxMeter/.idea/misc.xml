@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/repositorios G/Projeto-de-Eficiencia-Energetica/frontend/LuxMeter/app/src/main/res/drawable/circle.xml" value="0.235" />
+        <entry key="..\:/repositorios G/Projeto-de-Eficiencia-Energetica/frontend/LuxMeter/app/src/main/res/drawable/rounded_textview.xml" value="0.235" />
         <entry key="..\:/repositorios G/Projeto-de-Eficiencia-Energetica/frontend/LuxMeter/app/src/main/res/layout/activity_home.xml" value="0.3484375" />
         <entry key="..\:/repositorios G/Projeto-de-Eficiencia-Energetica/frontend/LuxMeter/app/src/main/res/layout/activity_splash.xml" value="0.36096014492753625" />
       </map>
