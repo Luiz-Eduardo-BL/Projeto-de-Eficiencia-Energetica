@@ -25,7 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:maxWidth="250dp"
-        android:text="nullnullnullnull nullnullnullnull null nullnullnullnullnull null nullnull null null"
+        android:text="null"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/salaTitulo"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
