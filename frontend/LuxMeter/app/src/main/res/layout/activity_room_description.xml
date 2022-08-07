@@ -7,6 +7,19 @@
     tools:context=".RoomDescription">
 
 
+    <ImageView
+        android:id="@+id/nextScreen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:rotation="0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/qtdLampadaTitulo"
+        app:layout_constraintVertical_bias="0.7"
+        app:srcCompat="@mipmap/nextnavigation" />
+
     <TextView
         android:id="@+id/sala"
         android:layout_width="wrap_content"
@@ -53,6 +66,7 @@
         android:id="@+id/comprimento"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="2dp"
         android:text="null"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/comprimentoTitulo"
@@ -76,6 +90,7 @@
         android:id="@+id/largura"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="2dp"
         android:text="null"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/larguraTitulo"
@@ -99,6 +114,7 @@
         android:id="@+id/distanciaMesaTeto"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
         android:text="null"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/distanciaMesaTetoTitulo"
@@ -111,7 +127,7 @@
         android:layout_width="95dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:text="Potência da\nLâmpada:"
+        android:text="Potência\nda Lâmpada:"
         android:textSize="14sp"
         app:fontFamily="sans-serif-black"
         app:layout_constraintStart_toEndOf="@+id/distanciaMesaTeto"
@@ -121,6 +137,7 @@
         android:id="@+id/potenciaLampada"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
         android:text="null"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/PotenciaLampadaTitulo"
@@ -133,7 +150,7 @@
         android:layout_width="95dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:text="Quantidade de\nLâmpada:"
+        android:text="Quantidade\nde Lâmpada:"
         android:textSize="14sp"
         app:fontFamily="sans-serif-black"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
@@ -143,6 +160,7 @@
         android:id="@+id/qtdLampada"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
         android:text="null"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/qtdLampadaTitulo"
@@ -184,18 +202,5 @@
         app:lottie_autoPlay="true"
         app:lottie_fileName="workspace.json"
         app:lottie_loop="true" />
-
-    <ImageView
-        android:id="@+id/nextScreen"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:rotation="0"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline4"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/qtdLampadaTitulo"
-        app:layout_constraintVertical_bias="0.7"
-        app:srcCompat="@mipmap/nextnavigation" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
