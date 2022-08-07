@@ -54,6 +54,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Iniciar\nProcessamento"
+        android:background="@drawable/rounded_textview"
         android:textColor="#FFF"
         android:textSize="14sp"
         app:fontFamily="sans-serif-black"
