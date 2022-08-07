@@ -12,11 +12,11 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     private static MainActivity instance;
-    private boolean hold = false;
     private TextView text;
     private SensorManager sensorManager;
     private Sensor sensor;
     private Button button;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,14 +41,6 @@ public class MainActivity extends AppCompatActivity {
 
     public Button getButton() {
         return button;
-    }
-
-    public void setHold(boolean hold) {
-        this.hold = hold;
-    }
-
-    public boolean isHold() {
-        return hold;
     }
 
     public static MainActivity getInstance() {
