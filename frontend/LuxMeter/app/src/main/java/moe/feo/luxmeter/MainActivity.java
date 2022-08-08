@@ -70,8 +70,8 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Transition transition = new Fade();
-                transition.setDuration(1000);
+                Transition transition = new Fade();//Transação de view suave...
+                transition.setDuration(1000);//delay de 1 segundo entre as transições das views
                 transition.addTarget(R.id.infoText);
                 transition.addTarget(R.id.infoAnimation);
                 transition.addTarget(R.id.button);
@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
 
                 handler.postDelayed(runnable = new Runnable() {
                     public void run() {
-                        handler.postDelayed(runnable, delay);
+                        handler.postDelayed(runnable, delay);//aguarda 10 segundos para prossguir para o código abaixo
 
                         String jsonQRCode = getIntent().getStringExtra("jsonQRCode");
                         ActivityResult(jsonQRCode);
