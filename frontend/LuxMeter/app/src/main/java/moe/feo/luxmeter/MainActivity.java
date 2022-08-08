@@ -93,7 +93,8 @@ public class MainActivity extends AppCompatActivity {
                         handler.postDelayed(runnable, delay);//aguarda 10 segundos para prossguir para o código abaixo
 
                         String jsonQRCode = getIntent().getStringExtra("jsonQRCode");
-                        ActivityResult(jsonQRCode);
+
+                        ActivityResult(jsonQRCode,luxText.getText().toString());
 
                         TransitionManager.beginDelayedTransition(findViewById(R.id.parent), transition);
 
@@ -129,9 +130,10 @@ public class MainActivity extends AppCompatActivity {
         return instance;
     }
 
-    private void ActivityResult(String jsonQRCode){
+    private void ActivityResult(String jsonQRCode, String iluminanceValue){
         Intent intent = new Intent(this,Result.class);
         intent.putExtra("jsonQRCode",jsonQRCode);
+        intent.putExtra("iluminanceValue",iluminanceValue);
         startActivity(intent);
     }
 }
