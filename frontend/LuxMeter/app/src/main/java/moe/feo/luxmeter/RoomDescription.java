@@ -58,7 +58,7 @@ public class RoomDescription extends AppCompatActivity {
 
         } catch (JSONException e) {
             e.printStackTrace();
-            Toast.makeText(this,"Código QR Inválido!",Toast.LENGTH_LONG).show();
+            Toast.makeText(RoomDescription.this,"Código QR Inválido!",Toast.LENGTH_LONG).show();
             this.finish();
         }
 

@@ -6,6 +6,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.android.volley.Request;
@@ -21,12 +22,15 @@ import org.json.JSONObject;
 
 public class Result extends AppCompatActivity {
 
+    private static Result instance;
     private TextView classificacao;
     private LottieAnimationView loadingAnimation;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        instance = this;
         setContentView(R.layout.activity_result);
 
         classificacao = findViewById(R.id.classificacao);
@@ -73,6 +77,8 @@ public class Result extends AppCompatActivity {
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
+
+
                             }
 
 
@@ -82,6 +88,8 @@ public class Result extends AppCompatActivity {
                         @Override
                         public void onErrorResponse(VolleyError error) {
                             // TODO: Handle error
+                            Toast.makeText(Result.instance,"Falha de conexão!",Toast.LENGTH_LONG).show();
+                            instance.finish();
 
                         }
                     });
