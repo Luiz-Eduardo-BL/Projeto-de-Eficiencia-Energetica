@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -20,6 +22,7 @@ import org.json.JSONObject;
 public class Result extends AppCompatActivity {
 
     private TextView classificacao;
+    private LottieAnimationView loadingAnimation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +30,8 @@ public class Result extends AppCompatActivity {
         setContentView(R.layout.activity_result);
 
         classificacao = findViewById(R.id.classificacao);
+
+        loadingAnimation = findViewById(R.id.loadingAnimation);
 
         String jsonQRCode = getIntent().getStringExtra("jsonQRCode");
 
@@ -62,6 +67,9 @@ public class Result extends AppCompatActivity {
                                 String resultadoClassificao = response.getString("classificacao");
 
                                 classificacao.setText(resultadoClassificao);
+                                classificacao.setVisibility(View.VISIBLE);
+                                loadingAnimation.setVisibility(View.INVISIBLE);
+
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
