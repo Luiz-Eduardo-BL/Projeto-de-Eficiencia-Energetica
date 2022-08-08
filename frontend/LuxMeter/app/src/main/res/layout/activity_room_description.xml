@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RoomDescription">
+
+
+    <ImageView
+        android:id="@+id/nextScreen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:rotation="0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/qtdLampadaTitulo"
+        app:layout_constraintVertical_bias="0.6"
+        app:srcCompat="@mipmap/nextnavigation" />
+
+    <TextView
+        android:id="@+id/sala"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxWidth="250dp"
+        android:text="null"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/salaTitulo"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/salaTitulo"
+        app:layout_constraintTop_toTopOf="@+id/salaTitulo" />
+
+    <TextView
+        android:id="@+id/salaTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:gravity="center"
+        android:text="Sala:"
+        android:textSize="20sp"
+        app:fontFamily="sans-serif-black"
+        app:layout_constraintEnd_toStartOf="@+id/sala"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/infoAnimation" />
+
+    <TextView
+        android:id="@+id/comprimentoTitulo"
+        android:layout_width="95dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="Comprimento:"
+        android:textSize="14sp"
+        app:fontFamily="sans-serif-black"
+        app:layout_constraintEnd_toStartOf="@+id/comprimento"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/sala" />
+
+    <TextView
+        android:id="@+id/comprimento"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="2dp"
+        android:text="null"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/comprimentoTitulo"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/comprimentoTitulo"
+        app:layout_constraintTop_toTopOf="@+id/comprimentoTitulo" />
+
+    <TextView
+        android:id="@+id/larguraTitulo"
+        android:layout_width="95dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="Largura:"
+        android:textSize="14sp"
+        app:fontFamily="sans-serif-black"
+        app:layout_constraintStart_toEndOf="@+id/comprimento"
+        app:layout_constraintTop_toBottomOf="@+id/sala" />
+
+    <TextView
+        android:id="@+id/largura"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="2dp"
+        android:text="null"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/larguraTitulo"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintStart_toEndOf="@+id/larguraTitulo"
+        app:layout_constraintTop_toTopOf="@+id/larguraTitulo"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/distanciaMesaTetoTitulo"
+        android:layout_width="95dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Distância\nMesa/Teto:"
+        android:textSize="14sp"
+        app:fontFamily="sans-serif-black"
+        app:layout_constraintStart_toStartOf="@+id/comprimentoTitulo"
+        app:layout_constraintTop_toBottomOf="@+id/comprimentoTitulo" />
+
+    <TextView
+        android:id="@+id/distanciaMesaTeto"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:text="null"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/distanciaMesaTetoTitulo"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintStart_toEndOf="@+id/distanciaMesaTetoTitulo"
+        app:layout_constraintTop_toTopOf="@+id/distanciaMesaTetoTitulo" />
+
+    <TextView
+        android:id="@+id/PotenciaLampadaTitulo"
+        android:layout_width="95dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Potência\nda Lâmpada:"
+        android:textSize="14sp"
+        app:fontFamily="sans-serif-black"
+        app:layout_constraintStart_toEndOf="@+id/distanciaMesaTeto"
+        app:layout_constraintTop_toBottomOf="@+id/larguraTitulo" />
+
+    <TextView
+        android:id="@+id/potenciaLampada"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:text="null"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/PotenciaLampadaTitulo"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintStart_toEndOf="@+id/PotenciaLampadaTitulo"
+        app:layout_constraintTop_toTopOf="@+id/PotenciaLampadaTitulo" />
+
+    <TextView
+        android:id="@+id/qtdLampadaTitulo"
+        android:layout_width="95dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Quantidade\nde Lâmpada:"
+        android:textSize="14sp"
+        app:fontFamily="sans-serif-black"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/distanciaMesaTetoTitulo" />
+
+    <TextView
+        android:id="@+id/qtdLampada"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:text="null"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/qtdLampadaTitulo"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintStart_toEndOf="@+id/qtdLampadaTitulo"
+        app:layout_constraintTop_toTopOf="@+id/qtdLampadaTitulo" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.50" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/infoAnimation"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.02"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="workspace.json"
+        app:lottie_loop="true" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

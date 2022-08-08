@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/infoAnimation"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/infoText"
+        app:layout_constraintEnd_toEndOf="@+id/infoText"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/infoText"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.10"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="information.json"
+        app:lottie_loop="true" />
+
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
+        android:background="#38546A"
+        android:text="OK"
+        android:textColor="#FFF"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/infoText"
+        app:layout_constraintVertical_bias="0.8" />
+
+    <TextView
+        android:id="@+id/infoText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Posicione o celular\nno centro do plano de trabalho\ne aguarde a contagem regresiva!"
+        android:visibility="invisible"
+        app:fontFamily="sans-serif-black"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="@+id/button"
+        app:layout_constraintStart_toStartOf="@+id/button"
+        app:layout_constraintTop_toBottomOf="@+id/infoAnimation" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lightAnimation"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/countdownAnimation"
+        app:layout_constraintEnd_toEndOf="@+id/countdownAnimation"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/countdownAnimation"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="spread"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="light.json"
+        app:lottie_loop="true" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/countdownAnimation"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lightAnimation"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="countdown.json"
+        app:lottie_loop="true" />
+    <TextView
+        android:id="@+id/num"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="100dp"
+        android:gravity="center"
+        android:text=""
+        android:textColor="@color/colorNumberDisplay"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/lightAnimation"
+        app:layout_constraintEnd_toEndOf="@+id/lightAnimation"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/lightAnimation"
+        app:layout_constraintTop_toTopOf="@+id/lightAnimation"
+        app:layout_constraintVertical_bias="0.52" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
