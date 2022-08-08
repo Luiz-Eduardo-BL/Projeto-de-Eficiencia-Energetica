@@ -27,6 +27,7 @@ public class Home extends AppCompatActivity {
         iniciar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 IntentIntegrator intentIntegrator = new IntentIntegrator(Home.this);
 
                 intentIntegrator.setPrompt("Aponte a câmera para o código QR\nda sala e enquadre nas marcações\n\n");
@@ -36,6 +37,7 @@ public class Home extends AppCompatActivity {
                 intentIntegrator.setCaptureActivity(Capture.class);
 
                 intentIntegrator.initiateScan();
+
             }
         });
 
@@ -58,4 +60,6 @@ public class Home extends AppCompatActivity {
         startActivity(intent);
 
     }
+
+
 }

@@ -6,6 +6,7 @@ import androidx.transition.Transition;
 import androidx.transition.TransitionManager;
 
 import android.content.Context;
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.Bundle;
@@ -26,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView luxText, infoText;
     private LottieAnimationView infoAnimation, lightAnimation, countdownAnimation;
     private Runnable runnable;
-    private int delay = 10000;
+    private int delay = 10000; //10 segundos
 
     Handler handler = new Handler();
 
@@ -86,6 +87,26 @@ public class MainActivity extends AppCompatActivity {
                 luxText.setVisibility(View.VISIBLE);
                 lightAnimation.setVisibility(View.VISIBLE);
                 countdownAnimation.setVisibility(View.VISIBLE);
+
+                handler.postDelayed(runnable = new Runnable() {
+                    public void run() {
+                        handler.postDelayed(runnable, delay);
+
+                        String jsonQRCode = getIntent().getStringExtra("jsonQRCode");
+                        ActivityResult(jsonQRCode);
+
+                        TransitionManager.beginDelayedTransition(findViewById(R.id.parent), transition);
+
+                        infoText.setVisibility(View.VISIBLE);
+                        infoAnimation.setVisibility(View.VISIBLE);
+                        button.setVisibility(View.VISIBLE);
+                        luxText.setVisibility(View.INVISIBLE);
+                        lightAnimation.setVisibility(View.INVISIBLE);
+                        countdownAnimation.setVisibility(View.INVISIBLE);
+
+                    }
+                }, delay);
+
             }
         });
 
@@ -94,16 +115,23 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onPause() {//função chamada quando sai da tela
+        super.onPause();
+        handler.removeCallbacks(runnable); //para o handler quando a activity não está visível, super.onPause();
+    }
 
     public TextView getTextView() {
         return luxText;
     }
 
-    public Button getButton() {
-        return button;
-    }
-
     public static MainActivity getInstance() {
         return instance;
+    }
+
+    private void ActivityResult(String jsonQRCode){
+        Intent intent = new Intent(this,Result.class);
+        intent.putExtra("jsonQRCode",jsonQRCode);
+        startActivity(intent);
     }
 }
