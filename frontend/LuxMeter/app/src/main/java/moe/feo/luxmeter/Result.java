@@ -96,9 +96,9 @@ public class Result extends AppCompatActivity {
 
             queue.add(jsonObjectRequest);
 
-        } catch (JSONException e) {
+        } catch (Exception e) {
             e.printStackTrace();
-            Toast.makeText(getApplicationContext(),"Este aparelho não possui sensor de luz!",Toast.LENGTH_LONG).show();
+            Toast.makeText(Result.instance,"Este aparelho não possui sensor de luz!",Toast.LENGTH_LONG).show();
             instance.finish();
         }
 

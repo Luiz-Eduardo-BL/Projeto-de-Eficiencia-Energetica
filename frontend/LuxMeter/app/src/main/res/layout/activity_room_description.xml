@@ -50,7 +50,7 @@
 
     <TextView
         android:id="@+id/comprimentoTitulo"
-        android:layout_width="96dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:text="Comprimento:"
@@ -75,7 +75,7 @@
 
     <TextView
         android:id="@+id/larguraTitulo"
-        android:layout_width="96dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:text="Largura:"
@@ -99,7 +99,7 @@
 
     <TextView
         android:id="@+id/distanciaMesaTetoTitulo"
-        android:layout_width="96dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:text="Distância\nMesa/Teto:"
@@ -122,7 +122,7 @@
 
     <TextView
         android:id="@+id/PotenciaLampadaTitulo"
-        android:layout_width="96dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:text="Potência\nda Lâmpada:"
@@ -145,7 +145,7 @@
 
     <TextView
         android:id="@+id/qtdLampadaTitulo"
-        android:layout_width="96dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:text="Quantidade\nde Lâmpada:"
