@@ -47,7 +47,7 @@ public class Result extends AppCompatActivity {
         try {
             JSONObject jsonOBJ = new JSONObject(jsonQRCode);
 
-            Double iluminanceValue = Double.valueOf(getIntent().getStringExtra("iluminanceValue").replace("lx",""));
+            Double iluminanceValue = Double.valueOf(getIntent().getStringExtra("iluminanceValue").replace("lx","")); //se não tiver sensor de luz dará erro aqui
 
             jsonOBJ.put("iluminanciaMediaFinal",iluminanceValue);//add valor do sensor no json
 
@@ -86,7 +86,7 @@ public class Result extends AppCompatActivity {
                     }, new Response.ErrorListener() {
 
                         @Override
-                        public void onErrorResponse(VolleyError error) {
+                        public void onErrorResponse(VolleyError error) {//caso dê erro na conexão
                             // TODO: Handle error
                             Toast.makeText(Result.instance,"Falha de conexão!",Toast.LENGTH_LONG).show();
                             instance.finish();
@@ -98,6 +98,8 @@ public class Result extends AppCompatActivity {
 
         } catch (JSONException e) {
             e.printStackTrace();
+            Toast.makeText(getApplicationContext(),"Este aparelho não possui sensor de luz!",Toast.LENGTH_LONG).show();
+            instance.finish();
         }
 
 
