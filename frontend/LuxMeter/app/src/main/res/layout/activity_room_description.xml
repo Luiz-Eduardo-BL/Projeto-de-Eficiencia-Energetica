@@ -50,23 +50,21 @@
 
     <TextView
         android:id="@+id/comprimentoTitulo"
-        android:layout_width="95dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:text="Comprimento:"
         android:textSize="14sp"
         app:fontFamily="sans-serif-black"
         app:layout_constraintEnd_toStartOf="@+id/comprimento"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toBottomOf="@+id/sala" />
 
     <TextView
         android:id="@+id/comprimento"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="2dp"
+        android:layout_width="89dp"
+        android:layout_height="19dp"
         android:text="null"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/comprimentoTitulo"
@@ -77,7 +75,7 @@
 
     <TextView
         android:id="@+id/larguraTitulo"
-        android:layout_width="95dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:text="Largura:"
@@ -101,7 +99,7 @@
 
     <TextView
         android:id="@+id/distanciaMesaTetoTitulo"
-        android:layout_width="95dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:text="Distância\nMesa/Teto:"
@@ -124,7 +122,7 @@
 
     <TextView
         android:id="@+id/PotenciaLampadaTitulo"
-        android:layout_width="95dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:text="Potência\nda Lâmpada:"
@@ -147,7 +145,7 @@
 
     <TextView
         android:id="@+id/qtdLampadaTitulo"
-        android:layout_width="95dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:text="Quantidade\nde Lâmpada:"

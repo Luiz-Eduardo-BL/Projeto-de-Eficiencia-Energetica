@@ -3,8 +3,12 @@ package moe.feo.luxmeter;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.view.View;
 import android.widget.TextView;
 
@@ -34,6 +38,10 @@ public class Home extends AppCompatActivity {
 
                 intentIntegrator.setOrientationLocked(true);
 
+                intentIntegrator.setBeepEnabled(false);
+
+
+
                 intentIntegrator.setCaptureActivity(Capture.class);
 
                 intentIntegrator.initiateScan();
@@ -55,9 +63,19 @@ public class Home extends AppCompatActivity {
     }
 
     private void ActivityRoomDescription(String jsonQRCode){
+
         Intent intent = new Intent(this,RoomDescription.class);
         intent.putExtra("jsonQRCode",jsonQRCode);
         startActivity(intent);
+
+        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+// Vibrate for 500 milliseconds
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            v.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));
+        } else {
+            //deprecated in API 26
+            v.vibrate(500);
+        }
 
     }
 
