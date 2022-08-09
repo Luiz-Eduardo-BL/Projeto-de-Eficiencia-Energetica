@@ -4,8 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -19,14 +22,20 @@ import org.json.JSONObject;
 
 public class Result extends AppCompatActivity {
 
+    private static Result instance;
     private TextView classificacao;
+    private LottieAnimationView loadingAnimation;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        instance = this;
         setContentView(R.layout.activity_result);
 
         classificacao = findViewById(R.id.classificacao);
+
+        loadingAnimation = findViewById(R.id.loadingAnimation);
 
         String jsonQRCode = getIntent().getStringExtra("jsonQRCode");
 
@@ -38,7 +47,7 @@ public class Result extends AppCompatActivity {
         try {
             JSONObject jsonOBJ = new JSONObject(jsonQRCode);
 
-            Double iluminanceValue = Double.valueOf(getIntent().getStringExtra("iluminanceValue").replace("lx",""));
+            Double iluminanceValue = Double.valueOf(getIntent().getStringExtra("iluminanceValue").replace("lx","")); //se não tiver sensor de luz dará erro aqui
 
             jsonOBJ.put("iluminanciaMediaFinal",iluminanceValue);//add valor do sensor no json
 
@@ -62,9 +71,14 @@ public class Result extends AppCompatActivity {
                                 String resultadoClassificao = response.getString("classificacao");
 
                                 classificacao.setText(resultadoClassificao);
+                                classificacao.setVisibility(View.VISIBLE);
+                                loadingAnimation.setVisibility(View.INVISIBLE);
+
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
+
+
                             }
 
 
@@ -72,8 +86,10 @@ public class Result extends AppCompatActivity {
                     }, new Response.ErrorListener() {
 
                         @Override
-                        public void onErrorResponse(VolleyError error) {
+                        public void onErrorResponse(VolleyError error) {//caso dê erro na conexão
                             // TODO: Handle error
+                            Toast.makeText(Result.instance,"Falha de conexão!",Toast.LENGTH_LONG).show();
+                            instance.finish();
 
                         }
                     });
@@ -82,6 +98,8 @@ public class Result extends AppCompatActivity {
 
         } catch (JSONException e) {
             e.printStackTrace();
+            Toast.makeText(getApplicationContext(),"Este aparelho não possui sensor de luz!",Toast.LENGTH_LONG).show();
+            instance.finish();
         }
 
 
