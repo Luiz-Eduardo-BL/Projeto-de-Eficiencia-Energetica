@@ -2,6 +2,7 @@ package moe.feo.luxmeter;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -101,6 +102,25 @@ public class Result extends AppCompatActivity {
                                 String resultadoClassificao = response.getString("classificacao");
 
                                 classificacao.setText(resultadoClassificao);
+
+                                if (resultadoClassificao.equals("A")){//Verde Escuro
+                                    classificacao.setTextColor(Color.parseColor("#005224"));
+                                }
+                                else if (resultadoClassificao.equals("B")){//Verde Claro
+                                    classificacao.setTextColor(Color.parseColor("#669128"));
+                                }
+                                else if (resultadoClassificao.equals("C")){//Amarelo
+                                    classificacao.setTextColor(Color.parseColor("#FDE101"));
+                                }
+                                else if (resultadoClassificao.equals("D")){//Laranja
+                                    classificacao.setTextColor(Color.parseColor("#F18A01"));
+                                }
+                                else {//Vermelho
+                                    classificacao.setTextColor(Color.parseColor("#E02418"));
+                                }
+
+
+
                                 iluminacaoTitle.setVisibility(View.VISIBLE);
                                 pavimentoTitle.setVisibility(View.VISIBLE);
                                 pavimentoValue.setVisibility(View.VISIBLE);
