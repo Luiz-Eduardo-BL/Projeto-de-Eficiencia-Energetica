@@ -27,7 +27,7 @@ import java.text.DecimalFormat;
 public class Result extends AppCompatActivity {
 
     private static Result instance;
-    private TextView classificacao, iluminacaoTitle,pavimentoTitle, pavimentoValue, areaTitle, areaValue;
+    private TextView classificacao, iluminacaoTitle,pavimentoTitle, pavimentoValue, areaTitle, areaValue, dprTitle, dprValue;
     private ImageView imagemEficiencia;
     private static final DecimalFormat df = new DecimalFormat("0.00");
 
@@ -60,6 +60,10 @@ public class Result extends AppCompatActivity {
         classificacao = findViewById(R.id.classificacao);
 
         circleAnimation = findViewById(R.id.circle);
+
+        dprTitle = findViewById(R.id.dpirfTitle);
+
+        dprValue = findViewById(R.id.dpirfValue);
 
         String jsonQRCode = getIntent().getStringExtra("jsonQRCode");
 
@@ -101,6 +105,8 @@ public class Result extends AppCompatActivity {
 
                                 String resultadoClassificao = response.getString("classificacao");
 
+                                String resultadoDpirf = df.format(response.getDouble("densidadePotIluminacaoRelativa"));
+
                                 classificacao.setText(resultadoClassificao);
 
                                 if (resultadoClassificao.equals("A")){//Verde Escuro
@@ -119,13 +125,15 @@ public class Result extends AppCompatActivity {
                                     classificacao.setTextColor(Color.parseColor("#E02418"));
                                 }
 
-
+                                dprValue.setText(resultadoDpirf);
 
                                 iluminacaoTitle.setVisibility(View.VISIBLE);
                                 pavimentoTitle.setVisibility(View.VISIBLE);
                                 pavimentoValue.setVisibility(View.VISIBLE);
                                 areaTitle.setVisibility(View.VISIBLE);
                                 areaValue.setVisibility(View.VISIBLE);
+                                dprTitle.setVisibility(View.VISIBLE);
+                                dprValue.setVisibility(View.VISIBLE);
                                 imagemEficiencia.setVisibility(View.VISIBLE);
                                 circleAnimation.setVisibility(View.VISIBLE);
 
