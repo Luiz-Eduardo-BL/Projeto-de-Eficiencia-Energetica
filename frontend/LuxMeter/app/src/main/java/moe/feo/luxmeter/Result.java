@@ -1,11 +1,14 @@
 package moe.feo.luxmeter;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -49,7 +52,11 @@ public class Result extends AppCompatActivity implements ToolTipsManager.TipList
         instance = this;
         setContentView(R.layout.activity_result);
 
-        getSupportActionBar().setTitle("Eficiência da Sala");
+        ActionBar actionBar = getSupportActionBar();
+
+        actionBar.setTitle("Eficiência da Sala");//titulo do header
+
+        actionBar.setDisplayHomeAsUpEnabled(true); //botao de voltar no header
 
         iluminacaoTitle = findViewById(R.id.iluminacaoTitle);
 
@@ -236,5 +243,15 @@ public class Result extends AppCompatActivity implements ToolTipsManager.TipList
         builder.setAlign(align);
         builder.setBackgroundColor(Color.BLUE);
         toolTipsManager.show(builder.build());
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) { //função necessaria para o botao de voltar no header
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
