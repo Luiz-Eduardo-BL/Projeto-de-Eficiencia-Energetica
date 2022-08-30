@@ -54,7 +54,7 @@ public class RoomDescription extends AppCompatActivity {
             String comprimento = Double.toString(json.getDouble("comprimento"))+"m";
             String largura = Double.toString(json.getDouble("largura"))+"m";
             String distanciaMesaTeto = Double.toString(json.getDouble("distanciaPlanoDeTrabalhoTeto"))+"m";
-            String potenciaLampada = Double.toString(json.getDouble("potenciaLampada"))+"w";
+            String potenciaLampada = Double.toString(json.getDouble("potenciaLampada"))+"W";
             String qntLampada = Integer.toString(json.getInt("qntdLampadas"));
             salaText.setText(sala);
             comprimentoText.setText(comprimento);
