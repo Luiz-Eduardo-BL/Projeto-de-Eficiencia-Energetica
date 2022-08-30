@@ -220,7 +220,7 @@ public class Result extends AppCompatActivity implements ToolTipsManager.TipList
                 int align = ToolTip.ALIGN_CENTER;
                 displayTooltip(position,align);
                 break;
-            default:
+            default: //caso clique em qualquer regiao da view entao tira o tooltip caso esteja visivel na tela
                 toolTipsManager.findAndDismiss(helperIcon);
 
         }
