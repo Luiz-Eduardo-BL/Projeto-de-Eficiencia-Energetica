@@ -1,5 +1,7 @@
 package moe.feo.luxmeter;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.transition.Fade;
 import androidx.transition.Transition;
@@ -11,6 +13,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -38,7 +41,14 @@ public class MainActivity extends AppCompatActivity {
         instance = this;
         setContentView(R.layout.activity_main);
 
-        getSupportActionBar().setTitle("Medidor de Lux");
+        ActionBar actionBar = getSupportActionBar();
+
+        actionBar.setTitle("Medidor de Lux");
+
+        actionBar.setDisplayHomeAsUpEnabled(true); //botao de voltar no header
+
+
+
 
         luxText = findViewById(R.id.num);
 
@@ -135,5 +145,15 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("jsonQRCode",jsonQRCode);
         intent.putExtra("iluminanceValue",iluminanceValue);
         startActivity(intent);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) { //função necessaria para o botao de voltar no header
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/constraint_layout"
     tools:context=".Result">
 
     <TextView
@@ -47,20 +48,19 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline6"
         app:layout_constraintStart_toStartOf="@+id/guideline5"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.1" />
+        app:layout_constraintVertical_bias="0.05" />
 
     <ImageView
         android:id="@+id/imagemEficiencia"
         android:layout_width="252dp"
         android:layout_height="200dp"
-        android:layout_marginTop="30dp"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline6"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="@+id/guideline5"
-        app:layout_constraintTop_toBottomOf="@+id/areaTitle"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintTop_toBottomOf="@+id/dpirfTitle"
+        app:layout_constraintVertical_bias="0.101"
         app:srcCompat="@drawable/etiquetailuminacao" />
 
     <TextView
@@ -90,7 +90,7 @@
         app:layout_constraintEnd_toStartOf="@+id/areaValue"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline5"
         app:layout_constraintTop_toBottomOf="@+id/pavimentoValue" />
 
     <TextView
@@ -101,7 +101,7 @@
         android:text="120 m²"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/areaTitle"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline6"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/areaTitle"
         app:layout_constraintTop_toTopOf="@+id/areaTitle" />
@@ -135,8 +135,8 @@
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/circle"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline6"
@@ -147,5 +147,44 @@
         app:lottie_autoPlay="true"
         app:lottie_fileName="circleletter.json"
         app:lottie_loop="true" />
+
+    <TextView
+        android:id="@+id/dpirfTitle"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="DPIrf:"
+        android:visibility="invisible"
+        app:fontFamily="sans-serif-black"
+        app:layout_constraintEnd_toStartOf="@+id/helperIcon"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@+id/guideline5"
+        app:layout_constraintTop_toBottomOf="@+id/areaValue" />
+
+    <TextView
+        android:id="@+id/dpirfValue"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="null"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/helperIcon"
+        app:layout_constraintEnd_toStartOf="@+id/guideline6"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/helperIcon"
+        app:layout_constraintTop_toTopOf="@+id/helperIcon" />
+
+    <ImageView
+        android:id="@+id/helperIcon"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/dpirfTitle"
+        app:layout_constraintEnd_toStartOf="@+id/dpirfValue"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/dpirfTitle"
+        app:layout_constraintTop_toTopOf="@+id/dpirfTitle"
+        app:srcCompat="@drawable/helper" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

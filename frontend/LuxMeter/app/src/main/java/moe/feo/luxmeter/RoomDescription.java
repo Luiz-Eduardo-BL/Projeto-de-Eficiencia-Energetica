@@ -1,9 +1,12 @@
 package moe.feo.luxmeter;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -21,7 +24,11 @@ public class RoomDescription extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_room_description);
 
-        getSupportActionBar().setTitle("Informações da Sala");
+        ActionBar actionBar = getSupportActionBar();
+
+        actionBar.setTitle("Informações da Sala");
+
+        actionBar.setDisplayHomeAsUpEnabled(true); //botao de voltar no header
 
         salaText = findViewById(R.id.sala);
         comprimentoText = findViewById(R.id.comprimento);
@@ -47,7 +54,7 @@ public class RoomDescription extends AppCompatActivity {
             String comprimento = Double.toString(json.getDouble("comprimento"))+"m";
             String largura = Double.toString(json.getDouble("largura"))+"m";
             String distanciaMesaTeto = Double.toString(json.getDouble("distanciaPlanoDeTrabalhoTeto"))+"m";
-            String potenciaLampada = Double.toString(json.getDouble("potenciaLampada"))+"w";
+            String potenciaLampada = Double.toString(json.getDouble("potenciaLampada"))+"W";
             String qntLampada = Integer.toString(json.getInt("qntdLampadas"));
             salaText.setText(sala);
             comprimentoText.setText(comprimento);
@@ -69,5 +76,15 @@ public class RoomDescription extends AppCompatActivity {
         intent.putExtra("jsonQRCode",jsonQRCode);
         startActivity(intent);
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) { //função necessaria para o botao de voltar no header
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
