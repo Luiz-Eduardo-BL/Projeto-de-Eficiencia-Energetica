@@ -1,12 +1,14 @@
 package moe.feo.luxmeter;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,6 +19,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.tomergoldst.tooltips.ToolTip;
+import com.tomergoldst.tooltips.ToolTipsManager;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,13 +28,17 @@ import org.json.JSONObject;
 import java.text.DecimalFormat;
 
 
-public class Result extends AppCompatActivity {
+public class Result extends AppCompatActivity implements ToolTipsManager.TipListener, View.OnClickListener {
 
     private static Result instance;
     private TextView classificacao, iluminacaoTitle,pavimentoTitle, pavimentoValue, areaTitle, areaValue, dprTitle, dprValue;
-    private ImageView imagemEficiencia;
-    private static final DecimalFormat df = new DecimalFormat("0.00");
+    private ImageView imagemEficiencia, helperIcon;
 
+    private ConstraintLayout constraintLayout;
+
+    private ToolTipsManager toolTipsManager;
+
+    private static final DecimalFormat df = new DecimalFormat("0.00");
 
     private LottieAnimationView loadingAnimation, circleAnimation;
 
@@ -64,6 +72,17 @@ public class Result extends AppCompatActivity {
         dprTitle = findViewById(R.id.dpirfTitle);
 
         dprValue = findViewById(R.id.dpirfValue);
+
+        helperIcon = findViewById(R.id.helperIcon);
+
+        toolTipsManager = new ToolTipsManager(this);
+
+        helperIcon.setOnClickListener(this);
+
+        constraintLayout = findViewById(R.id.constraint_layout);
+
+        constraintLayout.setOnClickListener(this);
+
 
         String jsonQRCode = getIntent().getStringExtra("jsonQRCode");
 
@@ -105,7 +124,7 @@ public class Result extends AppCompatActivity {
 
                                 String resultadoClassificao = response.getString("classificacao");
 
-                                String resultadoDpirf = df.format(response.getDouble("densidadePotIluminacaoRelativa"));
+                                String resultadoDpirf = df.format(response.getDouble("densidadePotIluminacaoRelativa"))+"W/m²/100lx";
 
                                 classificacao.setText(resultadoClassificao);
 
@@ -133,6 +152,7 @@ public class Result extends AppCompatActivity {
                                 areaTitle.setVisibility(View.VISIBLE);
                                 areaValue.setVisibility(View.VISIBLE);
                                 dprTitle.setVisibility(View.VISIBLE);
+                                helperIcon.setVisibility(View.VISIBLE);
                                 dprValue.setVisibility(View.VISIBLE);
                                 imagemEficiencia.setVisibility(View.VISIBLE);
                                 circleAnimation.setVisibility(View.VISIBLE);
@@ -181,5 +201,40 @@ public class Result extends AppCompatActivity {
         } else {
             return manufacturer + "-" + model;
         }
+    }
+
+    @Override
+    public void onTipDismissed(View view, int anchorViewId, boolean byUser) {
+        if (byUser){ //quando o usuario soltar o botao
+
+        }
+
+    }
+
+    @Override
+    public void onClick(View view) {
+
+        switch (view.getId()){
+            case R.id.helperIcon:
+                int position = ToolTip.POSITION_ABOVE;
+                int align = ToolTip.ALIGN_CENTER;
+                displayTooltip(position,align);
+                break;
+            default:
+                toolTipsManager.findAndDismiss(helperIcon);
+
+        }
+    }
+
+    private void displayTooltip(int position, int align) {
+        String sMessage = "Densidade de Potência de\nIluminação Relativa Final";
+
+        toolTipsManager.findAndDismiss(helperIcon);
+
+        ToolTip.Builder builder = new ToolTip.Builder(this,helperIcon, constraintLayout,sMessage,position);
+
+        builder.setAlign(align);
+        builder.setBackgroundColor(Color.BLUE);
+        toolTipsManager.show(builder.build());
     }
 }

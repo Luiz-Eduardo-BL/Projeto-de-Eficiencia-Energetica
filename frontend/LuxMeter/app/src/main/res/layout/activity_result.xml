@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/constraint_layout"
     tools:context=".Result">
 
     <TextView
@@ -149,17 +150,17 @@
 
     <TextView
         android:id="@+id/dpirfTitle"
-        android:layout_width="130dp"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="30dp"
         android:text="DPIrf:"
         android:visibility="invisible"
         app:fontFamily="sans-serif-black"
-        app:layout_constraintEnd_toStartOf="@+id/dpirfValue"
+        app:layout_constraintEnd_toStartOf="@+id/helperIcon"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="@+id/guideline5"
-        app:layout_constraintTop_toBottomOf="@+id/areaTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/areaValue" />
 
     <TextView
         android:id="@+id/dpirfValue"
@@ -168,10 +169,22 @@
         android:layout_marginStart="5dp"
         android:text="null"
         android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@+id/dpirfTitle"
+        app:layout_constraintBottom_toBottomOf="@+id/helperIcon"
         app:layout_constraintEnd_toStartOf="@+id/guideline6"
         app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/helperIcon"
+        app:layout_constraintTop_toTopOf="@+id/helperIcon" />
+
+    <ImageView
+        android:id="@+id/helperIcon"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/dpirfTitle"
+        app:layout_constraintEnd_toStartOf="@+id/dpirfValue"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/dpirfTitle"
-        app:layout_constraintTop_toTopOf="@+id/dpirfTitle" />
+        app:layout_constraintTop_toTopOf="@+id/dpirfTitle"
+        app:srcCompat="@drawable/helper" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
