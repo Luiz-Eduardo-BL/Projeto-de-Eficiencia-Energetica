@@ -31,7 +31,7 @@ export default {
     async result(request, response) {
         response.set('Access-Control-Allow-Origin', '*')
 
-        let dataLeitura = moment.tz("America/Sao_Paulo").format("DD-MM-YYYY") //data atual em que ocorreu a leitura na sala
+        let dataLeitura = moment.tz("America/Sao_Paulo").format("YYYY-MM-DD") //data atual em que ocorreu a leitura na sala
 
         //console.log(dataAtual)
 
