@@ -5,9 +5,11 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -45,6 +47,8 @@ public class Result extends AppCompatActivity implements ToolTipsManager.TipList
 
     private LottieAnimationView loadingAnimation, circleAnimation;
 
+    private boolean isLoading = true; //flag para saber se a tela ainda está sendo carregada
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,9 +58,16 @@ public class Result extends AppCompatActivity implements ToolTipsManager.TipList
 
         ActionBar actionBar = getSupportActionBar();
 
+        //actionBar.setDisplayShowCustomEnabled(true);
+        //actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        //actionBar.setCustomView(R.layout.toolbar_title_layout);
+
         actionBar.setTitle("Eficiência da Sala");//titulo do header
 
         actionBar.setDisplayHomeAsUpEnabled(true); //botao de voltar no header
+
+
+        //floatingGraphic = findViewById(R.id.floatingGraphic);
 
         iluminacaoTitle = findViewById(R.id.iluminacaoTitle);
 
@@ -89,6 +100,7 @@ public class Result extends AppCompatActivity implements ToolTipsManager.TipList
         constraintLayout = findViewById(R.id.constraint_layout);
 
         constraintLayout.setOnClickListener(this);
+
 
 
         String jsonQRCode = getIntent().getStringExtra("jsonQRCode");
@@ -165,8 +177,10 @@ public class Result extends AppCompatActivity implements ToolTipsManager.TipList
                                 circleAnimation.setVisibility(View.VISIBLE);
 
                                 classificacao.setVisibility(View.VISIBLE);
+                                //floatingGraphic.setVisibility(View.VISIBLE);
                                 loadingAnimation.setVisibility(View.INVISIBLE);
 
+                                isLoading = false;
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -246,12 +260,34 @@ public class Result extends AppCompatActivity implements ToolTipsManager.TipList
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+
+        getMenuInflater().inflate(R.menu.main,menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) { //função necessaria para o botao de voltar no header
         switch (item.getItemId()) {
             case android.R.id.home:
                 this.finish();
                 return true;
+            case R.id.graphic:
+                if(!isLoading) {
+                    ActivityHistoricActivity();
+                    return true;
+                }
         }
         return super.onOptionsItemSelected(item);
     }
+
+    private void ActivityHistoricActivity(){
+        Intent intent = new Intent(this,Historic.class);
+        //intent.putExtra("jsonQRCode",jsonQRCode);
+        startActivity(intent);
+
+    }
+
+
 }
