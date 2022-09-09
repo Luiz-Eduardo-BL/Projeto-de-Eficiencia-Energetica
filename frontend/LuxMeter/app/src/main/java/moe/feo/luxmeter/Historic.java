@@ -42,6 +42,9 @@ public class Historic extends AppCompatActivity {
 
         actionBar.setTitle("Histórico das Medições");
 
+        //actionBar.setDisplayShowTitleEnabled(false);
+
+
         actionBar.setDisplayHomeAsUpEnabled(true); //botao de voltar no header
 
         plot = findViewById(R.id.plot);
