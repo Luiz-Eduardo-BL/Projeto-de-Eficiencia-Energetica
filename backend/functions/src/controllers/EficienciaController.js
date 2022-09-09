@@ -28,6 +28,95 @@ export default {
             })
     },
 
+    async create(request, response) {// usar somente se não tiver a tabela de eficiencia no banco
+        response.set('Access-Control-Allow-Origin', '*')
+        const tabelaEficiencia = [
+            {
+                "indiceK": 0.6,
+                "nivelA": 2.84,
+                "nivelB": 4.77,
+                "nivelC": 5.37,
+                "nivelD": 6.92
+            },
+            {
+                "indiceK": 0.8,
+                "nivelA": 2.5,
+                "nivelB": 3.86,
+                "nivelC": 4.32,
+                "nivelD": 5.57
+            },
+            {
+                "indiceK": 1,
+                "nivelA": 2.27,
+                "nivelB": 3.38,
+                "nivelC": 3.77,
+                "nivelD": 4.86
+            },
+            {
+                "indiceK": 1.25,
+                "nivelA": 2.12,
+                "nivelB": 3,
+                "nivelC": 3.34,
+                "nivelD": 4.31
+            },
+            {
+                "indiceK": 1.5,
+                "nivelA": 1.95,
+                "nivelB": 2.75,
+                "nivelC": 3,
+                "nivelD": 3.9
+            },
+            {
+                "indiceK": 2,
+                "nivelA": 1.88,
+                "nivelB": 2.53,
+                "nivelC": 2.77,
+                "nivelD": 3.57
+            },
+            {
+                "indiceK": 2.5,
+                "nivelA": 1.83,
+                "nivelB": 2.38,
+                "nivelC": 2.57,
+                "nivelD": 3.31
+            },
+            {
+                "indiceK": 3,
+                "nivelA": 1.76,
+                "nivelB": 2.27,
+                "nivelC": 2.46,
+                "nivelD": 3.17
+            },
+            {
+                "indiceK": 4,
+                "nivelA": 1.73,
+                "nivelB": 2.16,
+                "nivelC": 2.33,
+                "nivelD": 3
+            },
+            {
+                "indiceK": 5,
+                "nivelA": 1.71,
+                "nivelB": 2.09,
+                "nivelC": 2.24,
+                "nivelD": 2.89
+            }
+        ]
+
+        for (let i = 0; i < tabelaEficiencia.length; i++) {
+            await db.collection('eficiencia').add({
+                indiceK: tabelaEficiencia[i].indiceK,
+                nivelA: tabelaEficiencia[i].nivelA,
+                nivelB: tabelaEficiencia[i].nivelB,
+                nivelC: tabelaEficiencia[i].nivelC,
+                nivelD: tabelaEficiencia[i].nivelD
+            })
+        }
+        return response.json({ message: "Tabela de Eficiencia cadastrada com sucesso" })
+
+    },
+
+
     async result(request, response) {
         response.set('Access-Control-Allow-Origin', '*')
 
@@ -92,15 +181,15 @@ export default {
                     classificacao = "E"
                 }
 
-                
+
                 await db.collection('historico')
                     .where('sala', "==", sala)
-                    .where('dataLeitura',"==", dataLeitura)
+                    .where('dataLeitura', "==", dataLeitura)
                     .get()
                     .then(async snapshot => {
-                        
+
                         if (snapshot.empty) {
-                            
+
                             await db.collection('historico').add({
                                 sala,
                                 iluminanciaMediaFinal,
@@ -116,7 +205,7 @@ export default {
                             })
                         }
                         else {
-                                await db.collection('historico')
+                            await db.collection('historico')
                                 .doc(snapshot.docs[0].id)//pega o id do documento que tem a data atual (o primeiro da query)
                                 .update({
                                     iluminanciaMediaFinal,
@@ -140,6 +229,6 @@ export default {
                 response.status(404).json({ error: err })
             })
 
-                        
+
     }
 }

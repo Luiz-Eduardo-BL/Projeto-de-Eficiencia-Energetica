@@ -6,6 +6,8 @@ import HistoricController from "./controllers/HistoricController.js";
 const routes = Router()
 
 routes.get("/eficiencia", EficienciaController.index)
+routes.post("/eficiencia",EficienciaController.create)
+
 routes.post("/eficienciaResultado", EficienciaController.result)
 
 routes.post("/salas",SalaController.create)
