@@ -129,7 +129,7 @@ export default {
         const area = largura * comprimento
         const potenciaTotal = potenciaLampada * qntdLampadas
         const indiceK = area / (distanciaPlanoDeTrabalhoTeto * (comprimento + largura))
-        console.log(indiceK)
+        //console.log(indiceK)
         let classificacao = ""
 
         //if(aparelho.toLowerCase().includes("samsung")){

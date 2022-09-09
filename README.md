@@ -9,3 +9,5 @@
 
 ## Backend
 * Já é executado em nuvem
+* Para execução local, no terminal, digite:
+```cd backend/functions && npm run localhost```
