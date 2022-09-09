@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-  
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_gravity="center"
+    android:id="@+id/toolbar"
+    android:gravity="center"
+    >
+    <item
+        app:showAsAction="always"
+        android:icon="@drawable/graphic"
+        android:orderInCategory="100"
+        android:id="@+id/graphic"
+        android:title="Graphic"
+        />
+
 </menu>

@@ -187,4 +187,18 @@
         app:layout_constraintTop_toTopOf="@+id/dpirfTitle"
         app:srcCompat="@drawable/helper" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingGraphic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/circle"
+        app:layout_constraintEnd_toStartOf="@+id/guideline6"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/circle"
+        app:layout_constraintTop_toTopOf="@+id/circle"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/graphic" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
