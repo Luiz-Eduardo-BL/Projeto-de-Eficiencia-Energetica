@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -196,7 +195,6 @@ public class Result extends AppCompatActivity implements ToolTipsManager.TipList
                         @Override
                         public void onErrorResponse(VolleyError error) {//caso dê erro na conexão
                             // TODO: Handle error
-                            Log.d("myTag", String.valueOf(error));
                             Toast.makeText(Result.instance,"Falha de conexão!",Toast.LENGTH_LONG).show();
                             instance.finish();
 
