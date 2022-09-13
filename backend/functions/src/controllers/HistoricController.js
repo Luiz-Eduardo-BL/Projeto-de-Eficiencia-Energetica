@@ -7,7 +7,9 @@ export default {
         response.set('Access-Control-Allow-Origin', '*')
 
         await db.collection('historico')
-            .orderBy('dataLeitura', 'desc').get()
+            .orderBy('dataLeitura', 'desc')
+            .limit(365)//retorna os ultimos 365 registros / 1 ano
+            .get()
             .then(snapshot => {
                 let historico = []
                 snapshot.forEach(doc => {
