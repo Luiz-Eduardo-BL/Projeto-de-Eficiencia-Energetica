@@ -40,7 +40,11 @@ dependencies {
     implementation 'com.journeyapps:zxing-android-embedded:4.3.0' //qrcode - leitura dos dados da sala
     implementation 'com.android.volley:volley:1.2.1' //volley - conexao api
     implementation 'com.tomergoldst.android:tooltips:1.1.1' //tooltip
+
+    //implementation 'com.github.AnyChart:AnyChart-Android:1.1.2'
     implementation "com.androidplot:androidplot-core:1.5.10" //grafico
+    //implementation 'com.jjoe64:graphview:4.2.2'
+
 
 
 }

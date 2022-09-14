@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,15 +23,20 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.tomergoldst.tooltips.ToolTip;
 import com.tomergoldst.tooltips.ToolTipsManager;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Result extends AppCompatActivity implements ToolTipsManager.TipListener, View.OnClickListener {
@@ -48,6 +54,16 @@ public class Result extends AppCompatActivity implements ToolTipsManager.TipList
     private LottieAnimationView loadingAnimation, circleAnimation;
 
     private boolean isLoading = true; //flag para saber se a tela ainda está sendo carregada
+
+
+    /*------------------VARIÁVEIS DA TELA DE HISTÓRICO-----------------*/
+
+    private ArrayList<Double> series1Numbers = new ArrayList<Double>();
+
+    private ArrayList<String> domainLabels = new ArrayList<String>();
+
+    /*----------------------------------------------------------------*/
+
 
 
     @Override
@@ -107,9 +123,6 @@ public class Result extends AppCompatActivity implements ToolTipsManager.TipList
 
         //classificacao.setText(getIntent().getStringExtra("iluminanceValue"));
 
-
-
-
         try {
             JSONObject jsonOBJ = new JSONObject(jsonQRCode);
 
@@ -128,7 +141,9 @@ public class Result extends AppCompatActivity implements ToolTipsManager.TipList
 
             RequestQueue queue = Volley.newRequestQueue(this);
 
-            String url = Api.baseURL+"eficienciaResultado";
+            String url = Api.baseURL+"eficienciaResultado"; //REQUEST POST para saber a eficiência
+
+            String url2 = Api.baseURL+"historico"; //REQUEST GET PARA SABER O HISTÓRICO
 
 
 
@@ -141,9 +156,51 @@ public class Result extends AppCompatActivity implements ToolTipsManager.TipList
 
                             try {
 
+
+                                /*-----SOLICITAÇÃO DE REQUEST PARA A TELA DE HISTÓRICO*/
+                                RequestQueue queueArray = Volley.newRequestQueue(instance);
+                                JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url2, null, new Response.Listener<JSONArray>() {
+                                    @Override
+                                    public void onResponse(JSONArray response) {
+                                        try {
+                                            for (int i=0;i<response.length();i++){
+
+                                                JSONObject medicao = response.getJSONObject(response.length()-i-1);
+                                                series1Numbers.add(medicao.getDouble("densidadePotIluminacaoRelativa"));
+                                                domainLabels.add(medicao.getString("dataLeitura"));
+                                            }
+
+
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
+                                        }
+
+
+                                    }
+                                },
+                                        new Response.ErrorListener() {
+
+                                            @Override
+                                            public void onErrorResponse(VolleyError error) {//caso dê erro na conexão
+                                                // TODO: Handle error
+                                                Toast.makeText(Result.instance,"Falha de conexão!",Toast.LENGTH_LONG).show();
+                                                instance.finish();
+
+                                            }
+                                        });
+
+                                queueArray.add(jsonArrayRequest);
+                                /*-----------------------------------------------------*/
+
+
+
+
+
+
                                 String resultadoClassificao = response.getString("classificacao");
 
                                 String resultadoDpirf = df.format(response.getDouble("densidadePotIluminacaoRelativa"))+"W/m²/100lx";
+
 
                                 classificacao.setText(resultadoClassificao);
 
@@ -275,16 +332,24 @@ public class Result extends AppCompatActivity implements ToolTipsManager.TipList
                 return true;
             case R.id.graphic:
                 if(!isLoading) {
-                    ActivityHistoricActivity();
+                    ActivityHistoricActivity(series1Numbers, domainLabels);
                     return true;
                 }
         }
         return super.onOptionsItemSelected(item);
     }
 
-    private void ActivityHistoricActivity(){
+    private void ActivityHistoricActivity(ArrayList<Double> series1Numbers, ArrayList<String> domainLabels){
         Intent intent = new Intent(this,Historic.class);
-        //intent.putExtra("jsonQRCode",jsonQRCode);
+
+        intent.putExtra("domainLabels", domainLabels);
+
+        intent.putExtra("series1Numbers",series1Numbers);
+
+        //intent.putExtra("series1Numbers", (Serializable) series1Numbers);
+
+        //intent.putExtra("domainLabels", (Serializable) domainLabels);
+
         startActivity(intent);
 
     }
