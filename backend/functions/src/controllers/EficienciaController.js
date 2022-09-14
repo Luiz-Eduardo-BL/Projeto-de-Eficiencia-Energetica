@@ -8,7 +8,8 @@ export default {
         response.set('Access-Control-Allow-Origin', '*')
 
         await db.collection('eficiencia')
-            .orderBy('indiceK', 'asc').get()
+            .orderBy('indiceK', 'asc')
+            .get()
             .then(snapshot => {
                 let eficiencia = []
                 snapshot.forEach(doc => {

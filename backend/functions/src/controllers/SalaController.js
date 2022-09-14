@@ -21,7 +21,7 @@ export default {
                 distanciaPlanoDeTrabalhoTeto,
                 potenciaLampada,
                 qntdLampadas
-            })
+            }) 
             .then(() => response.status(204).send())//nao tem conteudo para exibir
             .catch(() => response.status(404).send())
     },

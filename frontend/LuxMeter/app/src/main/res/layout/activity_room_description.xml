@@ -27,11 +27,13 @@
         android:maxWidth="250dp"
         android:text="null"
         android:textSize="16sp"
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="@+id/salaTitulo"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/salaTitulo"
-        app:layout_constraintTop_toTopOf="@+id/salaTitulo" />
+        app:layout_constraintTop_toTopOf="@+id/salaTitulo"
+        />
 
     <TextView
         android:id="@+id/salaTitulo"

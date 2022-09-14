@@ -13,8 +13,9 @@
         android:layout_height="match_parent"
         android:id="@+id/plot"
         app:title=""
-        app:rangeTitle="range"
-        app:domainTitle="domain"
+        app:rangeTitle="DPIrf"
+        app:domainTitle="Data de Medição"
+        app:paddingTop="20dp"
         />
 
 </LinearLayout>
