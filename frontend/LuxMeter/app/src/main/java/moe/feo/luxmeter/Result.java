@@ -143,7 +143,7 @@ public class Result extends AppCompatActivity implements ToolTipsManager.TipList
 
             String url = Api.baseURL+"eficienciaResultado"; //REQUEST POST para saber a eficiência
 
-            String url2 = Api.baseURL+"historico"; //REQUEST GET PARA SABER O HISTÓRICO
+            String url2 = Api.baseURL+"historico?"+"sala="+jsonOBJ.getString("sala"); //REQUEST GET PARA SABER O HISTÓRICO
 
 
 
