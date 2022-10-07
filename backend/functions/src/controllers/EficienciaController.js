@@ -125,17 +125,36 @@ export default {
 
         //console.log(dataAtual)
 
-        const { sala, largura, comprimento, distanciaPlanoDeTrabalhoTeto, potenciaLampada, qntdLampadas, iluminanciaMediaFinal, aparelho } = request.body
+        let { sala, largura, comprimento, distanciaPlanoDeTrabalhoTeto, potenciaLampada, qntdLampadas, iluminanciaMediaFinal, aparelho } = request.body
 
         const area = largura * comprimento
         const potenciaTotal = potenciaLampada * qntdLampadas
         const indiceK = area / (distanciaPlanoDeTrabalhoTeto * (comprimento + largura))
         //console.log(indiceK)
         let classificacao = ""
+        let taxaDeCalibracao = 0;
 
-        //if(aparelho.toLowerCase().includes("samsung")){
+        if(aparelho.toLowerCase().includes("xiaomi-21091116ag")){
+            taxaDeCalibracao = 41/64; //valor luximetro / valor celular
 
-        // }
+            iluminanciaMediaFinal = iluminanciaMediaFinal*taxaDeCalibracao;
+
+        }
+
+        else if(aparelho.toLowerCase().includes("lge-lm-x120")){
+            
+            taxaDeCalibracao = 41/129; //valor luximetro / valor celular
+            
+            iluminanciaMediaFinal = iluminanciaMediaFinal*taxaDeCalibracao;
+
+        }
+
+        else if(aparelho.toLowerCase().includes("samsung-sm-a107m")){
+
+            taxaDeCalibracao = 41/82; //valor luximetro / valor celular
+            
+            iluminanciaMediaFinal = iluminanciaMediaFinal*taxaDeCalibracao;
+        }
 
         await db.collection('eficiencia')
             .orderBy('indiceK', 'asc').get()
