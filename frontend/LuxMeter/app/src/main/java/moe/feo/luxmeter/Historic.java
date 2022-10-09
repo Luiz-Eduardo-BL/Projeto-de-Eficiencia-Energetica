@@ -56,11 +56,6 @@ public class Historic extends AppCompatActivity {
 
         //actionBar.setDisplayShowTitleEnabled(false);
 
-
-
-        String url = Api.baseURL+"historico";
-
-
         ArrayList<Double> series1Numbers = (ArrayList<Double>) getIntent().getSerializableExtra("series1Numbers");
 
         ArrayList<String> domainLabels = getIntent().getStringArrayListExtra("domainLabels");
@@ -169,13 +164,16 @@ public class Historic extends AppCompatActivity {
             }
         });
         //plot.setDomainBoundaries(2,5,BoundaryMode.GROW);
-        plot.setDomainStep(StepMode.SUBDIVIDE,2); //Subdivisões do eixo x
+
+        plot.setDomainStep(StepMode.SUBDIVIDE,domainLabels.size()<5 ? domainLabels.size() : 5); //Subdivisões do eixo x
+
 
         plot.getLegend().setVisible(false);//COLOCAR LEGENDA INVISÍVEL
 
         plot.getDomainTitle().position(0, HorizontalPositioning.ABSOLUTE_FROM_CENTER, 0, VerticalPositioning.RELATIVE_TO_BOTTOM,  Anchor.BOTTOM_MIDDLE); //CENTRALIZAR EIXO X
 
         plot.getGraph().getLineLabelStyle(XYGraphWidget.Edge.BOTTOM).setRotation(-45);
+
 
 
         //plot.centerOnDomainOrigin(0);

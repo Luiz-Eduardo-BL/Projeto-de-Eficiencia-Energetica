@@ -331,7 +331,7 @@ public class Result extends AppCompatActivity implements ToolTipsManager.TipList
                 this.finish();
                 return true;
             case R.id.graphic:
-                if(!isLoading) {
+                if(!isLoading) { //se ainda está na requição get...
                     ActivityHistoricActivity(series1Numbers, domainLabels);
                     return true;
                 }
