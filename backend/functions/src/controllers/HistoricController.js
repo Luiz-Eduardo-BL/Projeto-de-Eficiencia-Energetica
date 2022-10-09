@@ -17,7 +17,7 @@ export default {
                 snapshot.forEach( doc => {
 
                     historico.push({
-                        dataLeitura: moment(doc.data().dataLeitura).tz('America/Sao_Paulo').format('DD/MM/YYYY').substring(0,6)+moment(doc.data().dataLeitura).tz('America/Sao_Paulo').format('DD/MM/YYYY').substring(8,10), //data formatada para dd/mm/aa
+                        dataLeitura: moment(doc.data().dataLeitura).format('DD/MM/YYYY').substring(0,6)+moment(doc.data().dataLeitura).format('DD/MM/YYYY').substring(8,10), //data formatada para dd/mm/aa
                         densidadePotIluminacaoRelativa: doc.data().densidadePotIluminacaoRelativa
                     })
                 })
