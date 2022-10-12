@@ -56,11 +56,6 @@ public class Historic extends AppCompatActivity {
 
         //actionBar.setDisplayShowTitleEnabled(false);
 
-
-
-        String url = Api.baseURL+"historico";
-
-
         ArrayList<Double> series1Numbers = (ArrayList<Double>) getIntent().getSerializableExtra("series1Numbers");
 
         ArrayList<String> domainLabels = getIntent().getStringArrayListExtra("domainLabels");
@@ -169,7 +164,9 @@ public class Historic extends AppCompatActivity {
             }
         });
         //plot.setDomainBoundaries(2,5,BoundaryMode.GROW);
-        plot.setDomainStep(StepMode.SUBDIVIDE,2); //Subdivisões do eixo x
+
+        plot.setDomainStep(StepMode.SUBDIVIDE,domainLabels.size()<5 ? domainLabels.size() : 5); //Subdivisões do eixo x
+
 
         plot.getLegend().setVisible(false);//COLOCAR LEGENDA INVISÍVEL
 
@@ -177,11 +174,20 @@ public class Historic extends AppCompatActivity {
 
         plot.getGraph().getLineLabelStyle(XYGraphWidget.Edge.BOTTOM).setRotation(-45);
 
+        plot.getGraph().setPaddingLeft(40);
+
+
+        // customize our domain/range labels
+        //plot.setDomainLabel("Year");
+        //plot.setRangeLabel("# of Sightings");
+
 
         //plot.centerOnDomainOrigin(0);
         //plot.centerOnRangeOrigin(0);
 
-        //plot.getOuterLimits().set(0, 100, 0, 100);
+        //plot.getOuterLimits().set(0, 20, 0, 20); //relacionado ao zoom
+        PanZoom.attach(plot, PanZoom.Pan.VERTICAL, PanZoom.Zoom.STRETCH_VERTICAL);
+
 
         //PanZoom.attach(plot); //permite dar zoom no gráfico
 

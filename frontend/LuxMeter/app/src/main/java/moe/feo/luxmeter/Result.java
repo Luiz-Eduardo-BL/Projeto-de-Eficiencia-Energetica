@@ -331,7 +331,12 @@ public class Result extends AppCompatActivity implements ToolTipsManager.TipList
                 this.finish();
                 return true;
             case R.id.graphic:
-                if(!isLoading) {
+                if(!isLoading) { //se ainda está na requição get...
+                    if (series1Numbers.size()<3) {
+                        Toast.makeText(Result.instance,"Hitórico disponível após 3 dias de medições realizadas!",Toast.LENGTH_LONG).show();
+
+                        return true;
+                    }
                     ActivityHistoricActivity(series1Numbers, domainLabels);
                     return true;
                 }
