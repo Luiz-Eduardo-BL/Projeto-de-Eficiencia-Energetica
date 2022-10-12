@@ -174,12 +174,20 @@ public class Historic extends AppCompatActivity {
 
         plot.getGraph().getLineLabelStyle(XYGraphWidget.Edge.BOTTOM).setRotation(-45);
 
+        plot.getGraph().setPaddingLeft(40);
+
+
+        // customize our domain/range labels
+        //plot.setDomainLabel("Year");
+        //plot.setRangeLabel("# of Sightings");
 
 
         //plot.centerOnDomainOrigin(0);
         //plot.centerOnRangeOrigin(0);
 
-        //plot.getOuterLimits().set(0, 100, 0, 100);
+        //plot.getOuterLimits().set(0, 20, 0, 20); //relacionado ao zoom
+        PanZoom.attach(plot, PanZoom.Pan.VERTICAL, PanZoom.Zoom.STRETCH_VERTICAL);
+
 
         //PanZoom.attach(plot); //permite dar zoom no gráfico
 
