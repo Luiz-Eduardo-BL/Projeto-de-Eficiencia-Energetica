@@ -17,7 +17,7 @@ import org.json.JSONObject;
 
 public class RoomDescription extends AppCompatActivity {
 
-    private TextView salaText, comprimentoText, larguraText, distanciaMesaTetoText, potenciaLampadaText, qtdLampadaText;
+    private TextView ambienteText, comprimentoText, larguraText, distanciaMesaTetoText, potenciaLampadaText, qtdLampadaText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,11 +26,11 @@ public class RoomDescription extends AppCompatActivity {
 
         ActionBar actionBar = getSupportActionBar();
 
-        actionBar.setTitle("Informações da Sala");
+        actionBar.setTitle("Informações do Ambiente");
 
         actionBar.setDisplayHomeAsUpEnabled(true); //botao de voltar no header
 
-        salaText = findViewById(R.id.sala);
+        ambienteText = findViewById(R.id.ambiente);
         comprimentoText = findViewById(R.id.comprimento);
         larguraText = findViewById(R.id.largura);
         distanciaMesaTetoText = findViewById(R.id.distanciaMesaTeto);
@@ -50,13 +50,13 @@ public class RoomDescription extends AppCompatActivity {
 
         try {
             JSONObject json = new JSONObject(jsonQRCode);
-            String sala = json.getString("sala");
+            String ambiente = " PAV. "+json.getString("pavimento")+" - "+json.getString("ambiente");
             String comprimento = Double.toString(json.getDouble("comprimento"))+"m";
             String largura = Double.toString(json.getDouble("largura"))+"m";
             String distanciaMesaTeto = Double.toString(json.getDouble("distanciaPlanoDeTrabalhoTeto"))+"m";
             String potenciaLampada = Double.toString(json.getDouble("potenciaLampada"))+"W";
             String qntLampada = Integer.toString(json.getInt("qntdLampadas"));
-            salaText.setText(sala);
+            ambienteText.setText(ambiente);
             comprimentoText.setText(comprimento);
             larguraText.setText(largura);
             distanciaMesaTetoText.setText(distanciaMesaTeto);

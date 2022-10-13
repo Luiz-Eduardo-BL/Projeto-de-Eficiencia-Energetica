@@ -21,30 +21,30 @@
         app:srcCompat="@mipmap/nextnavigation" />
 
     <TextView
-        android:id="@+id/sala"
+        android:id="@+id/ambiente"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:maxWidth="250dp"
         android:text="null"
         android:textSize="16sp"
         android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="@+id/salaTitulo"
+        app:layout_constraintBottom_toBottomOf="@+id/ambienteTitulo"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/salaTitulo"
-        app:layout_constraintTop_toTopOf="@+id/salaTitulo"
+        app:layout_constraintStart_toEndOf="@+id/ambienteTitulo"
+        app:layout_constraintTop_toTopOf="@+id/ambienteTitulo"
         />
 
     <TextView
-        android:id="@+id/salaTitulo"
+        android:id="@+id/ambienteTitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:gravity="center"
-        android:text="Sala:"
+        android:text="Ambiente:"
         android:textSize="20sp"
         app:fontFamily="sans-serif-black"
-        app:layout_constraintEnd_toStartOf="@+id/sala"
+        app:layout_constraintEnd_toStartOf="@+id/ambiente"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
@@ -61,7 +61,7 @@
         app:layout_constraintEnd_toStartOf="@+id/comprimento"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/sala" />
+        app:layout_constraintTop_toBottomOf="@+id/ambiente" />
 
     <TextView
         android:id="@+id/comprimento"
@@ -85,7 +85,7 @@
         android:textSize="14sp"
         app:fontFamily="sans-serif-black"
         app:layout_constraintStart_toEndOf="@+id/comprimento"
-        app:layout_constraintTop_toBottomOf="@+id/sala" />
+        app:layout_constraintTop_toBottomOf="@+id/ambiente" />
 
     <TextView
         android:id="@+id/largura"

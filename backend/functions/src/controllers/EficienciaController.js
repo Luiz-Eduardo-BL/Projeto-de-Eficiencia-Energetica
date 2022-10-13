@@ -121,11 +121,11 @@ export default {
     async result(request, response) {
         response.set('Access-Control-Allow-Origin', '*')
 
-        let dataLeitura = moment.tz("America/Sao_Paulo").format("YYYY-MM-DD") //data atual em que ocorreu a leitura na sala
+        let dataLeitura = moment.tz("America/Sao_Paulo").format("YYYY-MM-DD") //data atual em que ocorreu a leitura na ambiente
 
         //console.log(dataAtual)
 
-        let { sala, largura, comprimento, distanciaPlanoDeTrabalhoTeto, potenciaLampada, qntdLampadas, iluminanciaMediaFinal, aparelho } = request.body
+        let { pavimento, ambiente, largura, comprimento, distanciaPlanoDeTrabalhoTeto, potenciaLampada, qntdLampadas, iluminanciaMediaFinal, aparelho } = request.body
 
         const area = largura * comprimento
         const potenciaTotal = potenciaLampada * qntdLampadas
@@ -203,7 +203,8 @@ export default {
 
 
                 await db.collection('historico')
-                    .where('sala', "==", sala)
+                    .where('pavimento', '==', pavimento)
+                    .where('ambiente', "==", ambiente)
                     .where('dataLeitura', "==", dataLeitura)
                     .get()
                     .then(async snapshot => {
@@ -211,7 +212,8 @@ export default {
                         if (snapshot.empty) {
 
                             await db.collection('historico').add({
-                                sala,
+                                pavimento,
+                                ambiente,
                                 iluminanciaMediaFinal,
                                 classificacao,
                                 indiceK,

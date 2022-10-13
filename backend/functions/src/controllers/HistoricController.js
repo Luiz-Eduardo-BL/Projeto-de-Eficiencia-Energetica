@@ -5,10 +5,11 @@ export default {
 
     async index(request, response) {
         response.set('Access-Control-Allow-Origin', '*')
-        const { sala } = request.query
+        const { ambiente, pavimento } = request.query
 
         await db.collection('historico')
-            .where('sala', '==', sala)
+            .where('pavimento', '==', pavimento)
+            .where('ambiente', '==', ambiente)
             .orderBy('dataLeitura', 'desc')
             .limit(365)//retorna os ultimos 365 registros / 1 ano
             .get()
