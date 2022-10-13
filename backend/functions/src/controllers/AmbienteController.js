@@ -5,17 +5,19 @@ export default {
     async create(request, response) {
         response.set('Access-Control-Allow-Origin', '*')
         const {
-            sala,//nome ou numeracao da sala
-            comprimento,//comprimento da sala
-            largura,//largura da sala
+            pavimento,//pavimento
+            ambiente,//nome ou numeracao da ambiente
+            comprimento,//comprimento da ambiente
+            largura,//largura da ambiente
             distanciaPlanoDeTrabalhoTeto, //distancia do plano de trabalho ate o teto
             potenciaLampada,//potencia da lampada
             qntdLampadas,//quantidade de lampadas
         } = request.body
 
-        await db.collection('salas')
+        await db.collection('ambientes')
             .add({
-                sala,
+                pavimento,
+                ambiente,
                 comprimento,
                 largura,
                 distanciaPlanoDeTrabalhoTeto,
@@ -27,15 +29,17 @@ export default {
     },
     async indexQrCode(request, response) {
         response.set('Access-Control-Allow-Origin', '*')
-        const { sala } = request.query
-        await db.collection('salas')
-            .where('sala', '==', sala)
+        const { ambiente, pavimento } = request.query
+        await db.collection('ambientes')
+            .where('pavimento', '==', pavimento)
+            .where('ambiente', '==', ambiente)
             .get()
             .then(snapshot => {
-                let salaInfo = {}
+                let ambienteInfo = {}
                 snapshot.forEach(doc => {
-                    salaInfo = {
-                        sala: doc.data().sala,
+                    ambienteInfo = {
+                        pavimento: doc.data().pavimento,
+                        ambiente: doc.data().ambiente,
                         comprimento: doc.data().comprimento,
                         largura: doc.data().largura,
                         distanciaPlanoDeTrabalhoTeto: doc.data().distanciaPlanoDeTrabalhoTeto,
@@ -43,7 +47,7 @@ export default {
                         qntdLampadas: doc.data().qntdLampadas
                     }
                 })
-                return response.json({qrCodeSala:`https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${JSON.stringify(salaInfo).replace(/"([^"]+)":/g, '$1:').replaceAll("\"", "'")}`})
+                return response.json({qrCodeAmbiente:`https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${JSON.stringify(ambienteInfo).replace(/"([^"]+)":/g, '$1:').replaceAll("\"", "'")}`})
             }
             )
             .catch((err) => {
