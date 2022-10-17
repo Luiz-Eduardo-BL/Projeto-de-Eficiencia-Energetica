@@ -6,6 +6,7 @@
 
 ## Execução do Frontend
 * Apenas abrir o projeto no Android Studio e executar
+> Obs: O endereço base da API fica dentro da classe Api.class cd frontend/LuxMeter/app/src/main/java/moe/feo/luxmeter/Api.java
 
 ## Backend
 * Já é executado em nuvem
