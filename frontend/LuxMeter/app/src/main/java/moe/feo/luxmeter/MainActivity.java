@@ -47,9 +47,6 @@ public class MainActivity extends AppCompatActivity {
 
         actionBar.setDisplayHomeAsUpEnabled(true); //botao de voltar no header
 
-
-
-
         luxText = findViewById(R.id.num);
 
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -67,14 +64,12 @@ public class MainActivity extends AppCompatActivity {
         lightAnimation = findViewById(R.id.lightAnimation);
         countdownAnimation = findViewById(R.id.countdownAnimation);
 
-
         infoText.setVisibility(View.VISIBLE);
         infoAnimation.setVisibility(View.VISIBLE);
         button.setVisibility(View.VISIBLE);
         lightAnimation.setVisibility(View.INVISIBLE);
         luxText.setVisibility(View.INVISIBLE);
         countdownAnimation.setVisibility(View.INVISIBLE);
-
 
         button.setOnClickListener(new View.OnClickListener() {
 
@@ -100,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
 
                 handler.postDelayed(runnable = new Runnable() {
                     public void run() {
-                        handler.postDelayed(runnable, delay);//aguarda 10 segundos para prossguir para o código abaixo
+                        handler.postDelayed(runnable, delay);//aguarda 10 segundos para prosseguir para o código abaixo
 
                         String jsonQRCode = getIntent().getStringExtra("jsonQRCode");
 
@@ -117,13 +112,8 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                 }, delay);
-
             }
         });
-
-
-
-
     }
 
     @Override

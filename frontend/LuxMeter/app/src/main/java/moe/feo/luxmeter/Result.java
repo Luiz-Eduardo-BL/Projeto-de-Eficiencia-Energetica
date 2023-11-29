@@ -74,16 +74,9 @@ public class Result extends AppCompatActivity implements ToolTipsManager.TipList
 
         ActionBar actionBar = getSupportActionBar();
 
-        //actionBar.setDisplayShowCustomEnabled(true);
-        //actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        //actionBar.setCustomView(R.layout.toolbar_title_layout);
-
         actionBar.setTitle("Eficiência do Ambiente");//titulo do header
 
         actionBar.setDisplayHomeAsUpEnabled(true); //botao de voltar no header
-
-
-        //floatingGraphic = findViewById(R.id.floatingGraphic);
 
         iluminacaoTitle = findViewById(R.id.iluminacaoTitle);
 
@@ -117,11 +110,8 @@ public class Result extends AppCompatActivity implements ToolTipsManager.TipList
 
         constraintLayout.setOnClickListener(this);
 
-
-
         String jsonQRCode = getIntent().getStringExtra("jsonQRCode");
 
-        //classificacao.setText(getIntent().getStringExtra("iluminanceValue"));
 
         try {
             JSONObject jsonOBJ = new JSONObject(jsonQRCode);
@@ -266,9 +256,6 @@ public class Result extends AppCompatActivity implements ToolTipsManager.TipList
             instance.finish();
         }
 
-
-
-
     }
 
     private String getDeviceName() { //retorna o nome do celular que está sendo usado
@@ -284,9 +271,7 @@ public class Result extends AppCompatActivity implements ToolTipsManager.TipList
     @Override
     public void onTipDismissed(View view, int anchorViewId, boolean byUser) {
         if (byUser){ //quando o usuario soltar o botao
-
         }
-
     }
 
     @Override
@@ -351,13 +336,7 @@ public class Result extends AppCompatActivity implements ToolTipsManager.TipList
 
         intent.putExtra("series1Numbers",series1Numbers);
 
-        //intent.putExtra("series1Numbers", (Serializable) series1Numbers);
-
-        //intent.putExtra("domainLabels", (Serializable) domainLabels);
-
         startActivity(intent);
 
     }
-
-
 }

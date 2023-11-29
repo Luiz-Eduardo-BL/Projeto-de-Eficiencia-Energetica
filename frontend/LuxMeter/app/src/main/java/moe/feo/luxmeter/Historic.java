@@ -54,89 +54,11 @@ public class Historic extends AppCompatActivity {
 
         actionBar.setTitle("Histórico das Medições");
 
-        //actionBar.setDisplayShowTitleEnabled(false);
-
         ArrayList<Double> series1Numbers = (ArrayList<Double>) getIntent().getSerializableExtra("series1Numbers");
 
         ArrayList<String> domainLabels = getIntent().getStringArrayListExtra("domainLabels");
 
         actionBar.setDisplayHomeAsUpEnabled(true); //botao de voltar no header
-
-        /*
-        GraphView graph = (GraphView) findViewById(R.id.graph);
-
-        DataPoint[] points = new DataPoint[series1Numbers.size()];
-
-
-        for (int i = 0; i < points.length; i++) {
-            points[i] = new DataPoint(i,series1Numbers.get(i));
-        }
-
-        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(points);
-
-
-
-        //graph.getGridLabelRenderer().setNumHorizontalLabels(1);
-
-        GridLabelRenderer renderer = graph.getGridLabelRenderer();
-        renderer.setHorizontalLabelsAngle(0);//rotação das labels do eixo x
-
-
-
-        StaticLabelsFormatter staticLabelsFormatter = new StaticLabelsFormatter(graph);
-        //staticLabelsFormatter.setHorizontalLabels(new String[] {"old", "new"});
-        staticLabelsFormatter.setHorizontalLabels(domainLabels.toArray(new String[0]));//vetor de series n tem styring
-        //staticLabelsFormatter.setHorizontalLabels(new String[] {"s",domainLabels.get(domainLabels.size()-1)});
-        //staticLabelsFormatter.setVerticalLabels(new String[] {"s",domainLabels.get(domainLabels.size()-1)});
-
-
-        renderer.setLabelFormatter(new DefaultLabelFormatter(){
-            @Override
-            public String formatLabel(double value, boolean isValueX) {
-                if (isValueX) {
-                    // return as Integer
-                    if (value % getDivisier(domainLabels.size()) == 0){
-                        return ""+ domainLabels.get((int) value);
-                    }else {
-                        return null;
-                    }
-
-                } else {
-                    // show currency for y values
-                    return super.formatLabel(value, isValueX);
-                }
-            }
-        });
-
-
-
-
-        // styling series
-        //series.setTitle("Random Curve 1");
-        series.setColor(Color.GREEN);//cor da linha
-        series.setDrawDataPoints(true);//desenha vertices quando true
-        series.setDataPointsRadius(10);//tamanho dos vertices
-        series.setThickness(8);//grossura da linha
-
-
-        //graph.getViewport().setScalableY(true); // enables vertical zooming and scrolling
-        //graph.getViewport().setScalableY(true); // enables horizontal zooming and scrolling
-
-/*
-        graph.getGridLabelRenderer().setVerticalAxisTitleTextSize(30);
-        graph.getGridLabelRenderer().setVerticalAxisTitle("DPIrf");
-        graph.getGridLabelRenderer().setHorizontalAxisTitleTextSize(30);
-
-        graph.getGridLabelRenderer().setHorizontalAxisTitle("Data de Medição");
-        graph.getViewport().setScrollable(true);
-        graph.addSeries(series);
-
-
-         */
-
-
-
-
 
         plot = findViewById(R.id.plot);
 
@@ -163,10 +85,8 @@ public class Historic extends AppCompatActivity {
                 return null;
             }
         });
-        //plot.setDomainBoundaries(2,5,BoundaryMode.GROW);
 
         plot.setDomainStep(StepMode.SUBDIVIDE,domainLabels.size()<5 ? domainLabels.size() : 5); //Subdivisões do eixo x
-
 
         plot.getLegend().setVisible(false);//COLOCAR LEGENDA INVISÍVEL
 
@@ -176,27 +96,7 @@ public class Historic extends AppCompatActivity {
 
         plot.getGraph().setPaddingLeft(40);
 
-
-        // customize our domain/range labels
-        //plot.setDomainLabel("Year");
-        //plot.setRangeLabel("# of Sightings");
-
-
-        //plot.centerOnDomainOrigin(0);
-        //plot.centerOnRangeOrigin(0);
-
-        //plot.getOuterLimits().set(0, 20, 0, 20); //relacionado ao zoom
         PanZoom.attach(plot, PanZoom.Pan.VERTICAL, PanZoom.Zoom.STRETCH_VERTICAL);
-
-
-        //PanZoom.attach(plot); //permite dar zoom no gráfico
-
-
-
-
-
-
-
     }
 
 
@@ -212,8 +112,6 @@ public class Historic extends AppCompatActivity {
         }
         return 1;
     }
-
-
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) { //função necessaria para o botao de voltar no header
