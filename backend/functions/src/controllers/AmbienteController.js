@@ -14,22 +14,18 @@ export default {
             qntdLampadas,//quantidade de lampadas
         } = request.body
 
-        try {
-            await db.collection('ambientes')
-                .add({
-                    pavimento,
-                    ambiente,
-                    comprimento,
-                    largura,
-                    distanciaPlanoDeTrabalhoTeto,
-                    potenciaLampada,
-                    qntdLampadas
-                }) 
-                response.status(204).send(); // sucesso
-            } catch (error) {
-                console.error('Erro ao criar ambiente:', error);
-                response.status(500).send('Erro interno ao criar ambiente');
-            }
+        await db.collection('ambientes')
+            .add({
+                pavimento,
+                ambiente,
+                comprimento,
+                largura,
+                distanciaPlanoDeTrabalhoTeto,
+                potenciaLampada,
+                qntdLampadas
+            }) 
+            .then(() => response.status(204).send())//nao tem conteudo para exibir
+            .catch(() => response.status(404).send())
     },
     async indexQrCode(request, response) {
         response.set('Access-Control-Allow-Origin', '*')
