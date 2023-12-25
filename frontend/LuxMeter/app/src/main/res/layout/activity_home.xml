@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Projeto de\nEficiência Energética"
-        android:textColor="#FFF"
+        android:textColor="#000"
         android:textSize="18dp"
         app:fontFamily="sans-serif-black"
         app:layout_constraintBottom_toBottomOf="parent"

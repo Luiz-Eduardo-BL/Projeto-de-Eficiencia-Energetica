@@ -9,12 +9,10 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,27 +20,22 @@ import com.airbnb.lottie.LottieAnimationView;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.tomergoldst.tooltips.ToolTip;
 import com.tomergoldst.tooltips.ToolTipsManager;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class Result extends AppCompatActivity implements ToolTipsManager.TipListener, View.OnClickListener {
 
     private static Result instance;
-    private TextView classificacao, iluminacaoTitle,pavimentoTitle, pavimentoValue, areaTitle, areaValue, dprTitle, dprValue;
+    private TextView classificacao, iluminacaoTitle, pavimentoTitle, pavimentoValue, areaTitle, areaValue, dprTitle, dprValue;
     private ImageView imagemEficiencia, helperIcon;
 
     private ConstraintLayout constraintLayout;
@@ -55,16 +48,8 @@ public class Result extends AppCompatActivity implements ToolTipsManager.TipList
 
     private boolean isLoading = true; //flag para saber se a tela ainda está sendo carregada
 
-
-    /*------------------VARIÁVEIS DA TELA DE HISTÓRICO-----------------*/
-
     private ArrayList<Double> series1Numbers = new ArrayList<Double>();
-
     private ArrayList<String> domainLabels = new ArrayList<String>();
-
-    /*----------------------------------------------------------------*/
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,139 +59,64 @@ public class Result extends AppCompatActivity implements ToolTipsManager.TipList
 
         ActionBar actionBar = getSupportActionBar();
 
-        actionBar.setTitle("Eficiência do Ambiente");//titulo do header
+        actionBar.setTitle("Eficiência do Ambiente");
 
-        actionBar.setDisplayHomeAsUpEnabled(true); //botao de voltar no header
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         iluminacaoTitle = findViewById(R.id.iluminacaoTitle);
-
         pavimentoTitle = findViewById(R.id.pavimentoTitle);
-
         pavimentoValue = findViewById(R.id.pavimentoValue);
-
         areaTitle = findViewById(R.id.areaTitle);
-
         areaValue = findViewById(R.id.areaValue);
-
         imagemEficiencia = findViewById(R.id.imagemEficiencia);
-
         loadingAnimation = findViewById(R.id.loadingAnimation);
-
         classificacao = findViewById(R.id.classificacao);
-
         circleAnimation = findViewById(R.id.circle);
-
         dprTitle = findViewById(R.id.dpirfTitle);
-
         dprValue = findViewById(R.id.dpirfValue);
-
         helperIcon = findViewById(R.id.helperIcon);
-
         toolTipsManager = new ToolTipsManager(this);
-
         helperIcon.setOnClickListener(this);
-
         constraintLayout = findViewById(R.id.constraint_layout);
-
         constraintLayout.setOnClickListener(this);
 
         String jsonQRCode = getIntent().getStringExtra("jsonQRCode");
 
-
         try {
             JSONObject jsonOBJ = new JSONObject(jsonQRCode);
 
-            pavimentoValue.setText("PAV. "+jsonOBJ.getString("pavimento")+" - "+jsonOBJ.getString("ambiente"));//seta o texto do nome do pavimento com o nome da sala obtido
+            pavimentoValue.setText("PAV. " + jsonOBJ.getString("pavimento") + " - " + jsonOBJ.getString("ambiente"));
 
-            Double area = jsonOBJ.getDouble("largura")*jsonOBJ.getDouble("comprimento");
+            Double area = jsonOBJ.getDouble("largura") * jsonOBJ.getDouble("comprimento");
+            areaValue.setText(df.format(area) + "m²");
 
-            areaValue.setText(df.format(area)+"m²");//seta o texto da area com o nome da sala obtido
-
-
-            Double iluminanceValue = Double.valueOf(getIntent().getStringExtra("iluminanceValue").replace("lx","")); //se não tiver sensor de luz dará erro aqui
-
-            jsonOBJ.put("iluminanciaMediaFinal",iluminanceValue);//add valor do sensor no json
-
-            jsonOBJ.put("aparelho",getDeviceName());//add marca e modelo do aparelho ao json
+            Double iluminanceValue = Double.valueOf(getIntent().getStringExtra("iluminanceValue").replace("lx", ""));
+            jsonOBJ.put("iluminanciaMediaFinal", iluminanceValue);
+            jsonOBJ.put("aparelho", getDeviceName());
 
             RequestQueue queue = Volley.newRequestQueue(this);
 
-            String url = Api.baseURL+"eficienciaResultado"; //REQUEST POST para saber a eficiência
-
-            String url2 = Api.baseURL+"historico?"+"pavimento="+jsonOBJ.getString("pavimento")+"&ambiente="+jsonOBJ.getString("ambiente"); //REQUEST GET PARA SABER O HISTÓRICO
-
-
+            String url = Api.baseURL + "eficienciaResultado";
 
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                     (Request.Method.POST, url, jsonOBJ, new Response.Listener<JSONObject>() {
-
                         @Override
                         public void onResponse(JSONObject response) {
-                            //response /resultado da API
-
                             try {
-
-
-                                /*-----SOLICITAÇÃO DE REQUEST PARA A TELA DE HISTÓRICO*/
-                                RequestQueue queueArray = Volley.newRequestQueue(instance);
-                                JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url2, null, new Response.Listener<JSONArray>() {
-                                    @Override
-                                    public void onResponse(JSONArray response) {
-                                        try {
-                                            for (int i=0;i<response.length();i++){
-
-                                                JSONObject medicao = response.getJSONObject(response.length()-i-1);
-                                                series1Numbers.add(medicao.getDouble("densidadePotIluminacaoRelativa"));
-                                                domainLabels.add(medicao.getString("dataLeitura"));
-                                            }
-
-
-                                        } catch (JSONException e) {
-                                            e.printStackTrace();
-                                        }
-
-
-                                    }
-                                },
-                                        new Response.ErrorListener() {
-
-                                            @Override
-                                            public void onErrorResponse(VolleyError error) {//caso dê erro na conexão
-                                                // TODO: Handle error
-                                                Toast.makeText(Result.instance,"Falha de conexão!",Toast.LENGTH_LONG).show();
-                                                instance.finish();
-
-                                            }
-                                        });
-
-                                queueArray.add(jsonArrayRequest);
-                                /*-----------------------------------------------------*/
-
-
-
-
-
-
                                 String resultadoClassificao = response.getString("classificacao");
-
-                                String resultadoDpirf = df.format(response.getDouble("densidadePotIluminacaoRelativa"))+"W/m²/100lx";
-
+                                String resultadoDpirf = df.format(response.getDouble("densidadePotIluminacaoRelativa")) + "W/m²/100lx";
 
                                 classificacao.setText(resultadoClassificao);
 
-                                if (resultadoClassificao.equals("A")){//Verde Escuro
+                                if (resultadoClassificao.equals("A")) {
                                     classificacao.setTextColor(Color.parseColor("#005224"));
-                                }
-                                else if (resultadoClassificao.equals("B")){//Verde Claro
+                                } else if (resultadoClassificao.equals("B")) {
                                     classificacao.setTextColor(Color.parseColor("#669128"));
-                                }
-                                else if (resultadoClassificao.equals("C")){//Amarelo
+                                } else if (resultadoClassificao.equals("C")) {
                                     classificacao.setTextColor(Color.parseColor("#FDE101"));
-                                }
-                                else if (resultadoClassificao.equals("D")){//Laranja
+                                } else if (resultadoClassificao.equals("D")) {
                                     classificacao.setTextColor(Color.parseColor("#F18A01"));
-                                }
-                                else {//Vermelho
+                                } else {
                                     classificacao.setTextColor(Color.parseColor("#E02418"));
                                 }
 
@@ -224,41 +134,25 @@ public class Result extends AppCompatActivity implements ToolTipsManager.TipList
                                 circleAnimation.setVisibility(View.VISIBLE);
 
                                 classificacao.setVisibility(View.VISIBLE);
-                                //floatingGraphic.setVisibility(View.VISIBLE);
                                 loadingAnimation.setVisibility(View.INVISIBLE);
 
                                 isLoading = false;
-
                             } catch (JSONException e) {
                                 e.printStackTrace();
-
-
                             }
-
-
                         }
-                    }, new Response.ErrorListener() {
-
-                        @Override
-                        public void onErrorResponse(VolleyError error) {//caso dê erro na conexão
-                            // TODO: Handle error
-                            Toast.makeText(Result.instance,"Falha de conexão!",Toast.LENGTH_LONG).show();
-                            instance.finish();
-
-                        }
-                    });
+                    }, null);
 
             queue.add(jsonObjectRequest);
 
         } catch (Exception e) {
             e.printStackTrace();
-            Toast.makeText(Result.instance,"Este aparelho não possui sensor de luz!",Toast.LENGTH_LONG).show();
+            Toast.makeText(Result.instance, "Este aparelho não possui sensor de luz!", Toast.LENGTH_LONG).show();
             instance.finish();
         }
-
     }
 
-    private String getDeviceName() { //retorna o nome do celular que está sendo usado
+    private String getDeviceName() {
         String manufacturer = Build.MANUFACTURER.toLowerCase();
         String model = Build.MODEL.toLowerCase();
         if (model.startsWith(manufacturer)) {
@@ -270,56 +164,49 @@ public class Result extends AppCompatActivity implements ToolTipsManager.TipList
 
     @Override
     public void onTipDismissed(View view, int anchorViewId, boolean byUser) {
-        if (byUser){ //quando o usuario soltar o botao
+        if (byUser) {
         }
     }
 
     @Override
     public void onClick(View view) {
-
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.helperIcon:
                 int position = ToolTip.POSITION_ABOVE;
                 int align = ToolTip.ALIGN_CENTER;
-                displayTooltip(position,align);
+                displayTooltip(position, align);
                 break;
-            default: //caso clique em qualquer regiao da view entao tira o tooltip caso esteja visivel na tela
+            default:
                 toolTipsManager.findAndDismiss(helperIcon);
-
         }
     }
 
     private void displayTooltip(int position, int align) {
         String sMessage = "Densidade de Potência de\nIluminação Relativa Final";
-
         toolTipsManager.findAndDismiss(helperIcon);
 
-        ToolTip.Builder builder = new ToolTip.Builder(this,helperIcon, constraintLayout,sMessage,position);
-
+        ToolTip.Builder builder = new ToolTip.Builder(this, helperIcon, constraintLayout, sMessage, position);
         builder.setAlign(align);
         builder.setBackgroundColor(Color.BLUE);
         toolTipsManager.show(builder.build());
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu){
-
-        getMenuInflater().inflate(R.menu.main,menu);
-
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) { //função necessaria para o botao de voltar no header
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
                 this.finish();
                 return true;
             case R.id.graphic:
-                if(!isLoading) { //se ainda está na requição get...
-                    if (series1Numbers.size()<3) {
-                        Toast.makeText(Result.instance,"Hitórico disponível após 3 dias de medições realizadas!",Toast.LENGTH_LONG).show();
-
+                if (!isLoading) {
+                    if (series1Numbers.size() < 3) {
+                        Toast.makeText(Result.instance, "Histórico disponível após 3 dias de medições realizadas!", Toast.LENGTH_LONG).show();
                         return true;
                     }
                     ActivityHistoricActivity(series1Numbers, domainLabels);
@@ -329,14 +216,10 @@ public class Result extends AppCompatActivity implements ToolTipsManager.TipList
         return super.onOptionsItemSelected(item);
     }
 
-    private void ActivityHistoricActivity(ArrayList<Double> series1Numbers, ArrayList<String> domainLabels){
-        Intent intent = new Intent(this,Historic.class);
-
+    private void ActivityHistoricActivity(ArrayList<Double> series1Numbers, ArrayList<String> domainLabels) {
+        Intent intent = new Intent(this, Historic.class);
         intent.putExtra("domainLabels", domainLabels);
-
-        intent.putExtra("series1Numbers",series1Numbers);
-
+        intent.putExtra("series1Numbers", series1Numbers);
         startActivity(intent);
-
     }
 }
