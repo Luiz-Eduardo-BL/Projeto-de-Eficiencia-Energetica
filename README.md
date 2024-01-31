@@ -1,43 +1,86 @@
-# Projeto-de-Eficiencia-Energetica
-* Projeto focado em classificar a eficiência energética dos ambientes da Justiça Federal
+<center> 
+    <h1>Projeto Eficiencia Energetica</h1>
+</center>
 
-## Como é feita a classificação?
-* Uso do sensor de luz do aparelho e em seguida são feito os cálculos de classificação a partir das informações do ambiente analisado
+***
+Este repositório contém uma aplicação Backend e Mobile Android do Projeto de Eficiência Energética, desenvolvido em Node.js e Java, para a equipe da Justiça Federal de Teresina-PI.
 
-## Execução do Frontend
-* Apenas abrir o projeto no Android Studio e executar
-> Obs: O endereço base da API fica dentro da classe Api.class cd frontend/LuxMeter/app/src/main/java/moe/feo/luxmeter/Api.java
+## 🔋O que é o projeto?
+* O projeto consiste em uma aplicação que tem como objetivo medir a eficiência energética de um ambiente, a partir da medição da luz no local.
 
-## Backend
-* Já é executado em nuvem
-* Para execução local, no terminal, digite:
-```cd backend/functions && npm run serve```
+## 📊Como é feita a classificação?
+* A classificação é realizada com base na medição da luz ambiente, utilizando o sensor de luz de um aparelho Android.
 
-## Atividades Desenvolvidas
+***
+# 🚀Execução Backend
 
-* Reuniões feitas toda quarta-feira no Meet para discursão sobre o projeto;
-* Uso do Luxímetro para calibração dos aparelhos Android, os aparelhos utilizados(calibrados) e recomendados para o uso da aplicação são:
-    > <strong> Xiomi Poco M4 Pro - xiaomi-21091116ag <br/>
-    > Samsung Galaxy A10s - samsung-sm-a107m <br/>
-    > LG K8 Plus - lge-lm-x120</strong>
-* Utilização do Script em Python para carregar no banco todas os pavimentos da planilha recebida pelo JF além de gerar todos os Qr-Code das salas que foram carregadas no Banco de Dados;
-* Atividades/Features que foram finalizadas no Frontend:
-    > <strong> Ícone da aplicação<br/>
-    > Tela de Splash<br/>
-    > Tela Home<br/>
-    > Tela de Leitura do Qr-Code do pavimento/bloco<br/>
-    > Tela do Resultado do processamento (utilização do sensor de luz)<br/>
-    > Tela do Histórico das mensurações realização.<br/></strong>
+> Observação: Atente-se em ter todas as ferramentas instaladas em sua maquina e caso algo seja alterado no Backend, deve-se fazer o deploy logo em seguida para aplicar as alterações.
 
-* Atividades/Features que foram finalizadas no Backend:
-    > <strong>Rota do resultado da eficiência<br/>
-    > Rotas para o cadastro e visualização da tabela de eficiência<br/>
-    > Rota que retorna o Qr-Code dado o nome do pavimento/bloco<br/>
-    > Rota para o cadastro de uma Sala no banco de dados<br/>
-    > Rota de histórico de mensurações realizadas<br/></strong>
+1. Faça o clone desse repositorio rodando: <p>
+```git clone https://github.com/Luiz-Eduardo-BL/Projeto-de-Eficiencia-Energetica.git``` </p>
 
+2. Acesse a pasta ```cd ackend/functions``` do projeto no terminal e execute o comando: <p>
+```npm install``` </p>
 
-## Telas
+3. Execute o comando: <p>
+```npm install -g firebase-tools``` </p>
+
+4. Faça o login na conta Firebase executando o comando: <p>
+```firebase login``` </p>
+
+5. Execute o comando: <p>
+```firebase init``` </p>
+    Selecione usando as teclas "**Espace**" e "**Enter**", selecione as seguintes escolhas:
+    * **Firestore**
+    * **Functions**
+
+6. Em Firestore Setup:
+    * "What file should be used for Firestore Rules?" **firestore.rules**
+    * "What file should be used for Firestore indexes?" **firestore.indexes.json**
+    * "Would you like to initialize a new codebase, or overwrite an existing one? (Use arrow keys)" **Overwrite**
+    * "What language would you like to use to write Cloud Functions?" **JavaScript**
+    * "Do you want to use ESLint to catch probable bugs and enforce style?" **No**
+    * "File functions/package.json already exists. Overwrite?" **No**
+    * "File functions/index.js already exists. Overwrite?" **No**
+    * "File functions/.gitignore already exists. Overwrite?" **No**
+    * "Do you want to install dependencies with npm now?" **Yes**
+
+7. Execute o comando: <p>
+```firease deploy``` </p>
+
+8. Copie o link de **Function URL** que é utilizado para as funçoes.
+
+9. Altere o link nos locais especificos em [Leitor Planilha](/outros/leitorPLANILHA-JT.ipynb)
+    * **Observe se as colunas da planilha são as mesmas do Leitor, pois podem ocorrer erros caso sejam diferentes.**
+
+10. Execute o Leitor Planilha para carregar os dados no banco de dados e gerar o arquivo de QrCode.
+    * **Atente-se para a necessidade de instalar as bibliotecas necessárias, além do Python, para a execução do Leitor Planilha.**
+
+11. O Backend já é executado na nuvem. Para execução local, execute o comando: <p>
+```npm run serve``` </p>
+
+# 🚀Execução do Frontend
+
+1. Alterar o endereço base da API dentro de [Api.java](/frontend/LuxMeter/app/src/main/java/moe/feo/luxmeter/Api.java)
+
+2. Executar o projeto no Android Studio.
+
+3. Na pasta **Build** encontra-se o [APK](/Build/Projeto-Eficiencia-Energetica.apk) para instalação.
+
+***
+
+## 📱Dispositivos usados para calibração
+
+<ul>
+    <li> <strong> Xiomi Poco M4 Pro - xiaomi-21091116ag </strong> </li>
+    <li> <strong> Samsung Galaxy A10s - samsung-sm-a107m </strong> </li>
+    <li> <strong> LG K8 Plus - lge-lm-x120 </strong> </li>
+</ul>
+
+***
+<center>
+
+## 📲 Telas de Execução do Aplicativo
 
 ### Tela Splash e Home
 
@@ -55,3 +98,5 @@
 ### Tela de IResultados e Historico
 
 ![Medidor de Lux - Informações](outros/screenshots/5.png)
+
+</center>
