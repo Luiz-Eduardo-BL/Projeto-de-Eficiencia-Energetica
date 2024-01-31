@@ -17,7 +17,7 @@ Este repositório contém uma aplicação Backend e Mobile Android do Projeto de
 1. Faça o clone desse repositorio rodando: <p>
 ```git clone https://github.com/Luiz-Eduardo-BL/Projeto-de-Eficiencia-Energetica.git``` </p>
 
-2. Acesse a pasta ```cd ackend/functions``` do projeto no terminal e execute o comando: <p>
+2. Acesse a pasta ```cd backend/functions``` do projeto no terminal e execute o comando: <p>
 ```npm install``` </p>
 
 3. Execute o comando: <p>
