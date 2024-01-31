@@ -2,7 +2,6 @@
     <h1>Projeto Eficiencia Energetica</h1>
 </center>
 
-***
 Este repositório contém uma aplicação Backend e Mobile Android do Projeto de Eficiência Energética, desenvolvido em Node.js e Java, para a equipe da Justiça Federal de Teresina-PI.
 
 ## 🔋O que é o projeto?
@@ -11,7 +10,6 @@ Este repositório contém uma aplicação Backend e Mobile Android do Projeto de
 ## 📊Como é feita a classificação?
 * A classificação é realizada com base na medição da luz ambiente, utilizando o sensor de luz de um aparelho Android.
 
-***
 # 🚀Execução Backend
 
 > Observação: Atente-se em ter todas as ferramentas instaladas em sua maquina e caso algo seja alterado no Backend, deve-se fazer o deploy logo em seguida para aplicar as alterações.
@@ -67,7 +65,6 @@ Este repositório contém uma aplicação Backend e Mobile Android do Projeto de
 
 3. Na pasta **Build** encontra-se o [APK](/Build/Projeto-Eficiencia-Energetica.apk) para instalação.
 
-***
 
 ## 📱Dispositivos usados para calibração
 
@@ -77,7 +74,6 @@ Este repositório contém uma aplicação Backend e Mobile Android do Projeto de
     <li> <strong> LG K8 Plus - lge-lm-x120 </strong> </li>
 </ul>
 
-***
 <center>
 
 ## 📲 Telas de Execução do Aplicativo
